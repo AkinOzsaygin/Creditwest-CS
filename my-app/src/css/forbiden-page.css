@@ -1,0 +1,7 @@
+.forbiden-page-container{
+    background: url('../images/page-forbidden-image.jpg');
+    height: 80%;
+    width: 80%;
+    align-self: center;
+    margin: auto 0;
+}
