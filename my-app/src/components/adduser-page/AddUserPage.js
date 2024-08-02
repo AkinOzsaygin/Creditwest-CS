@@ -12,7 +12,8 @@ const AddUserPage = () => {
         email: '',
         phoneNumber: '',
         password: '',
-        id:''
+        id:'',
+        permissions:''
     });
 
     const handleChange = (e) => {
@@ -61,6 +62,18 @@ const AddUserPage = () => {
                                 required
                             />
                         </div>
+                        <div className="form-group">
+                            <label htmlFor="Permissions">Permissions</label>
+                            <input
+                                type="text"
+                                id="permissions"
+                                name="permissions"
+                                value={formData.permissions}
+                                onChange={handleChange}
+                                placeholder="Can wiev"
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
@@ -87,11 +100,22 @@ const AddUserPage = () => {
                             >
                                 <option value="">Seçin</option>
                                 <option value="Admin">Admin</option>
-                                <option value="Manager">Manager</option>
                                 <option value="User">User</option>
                                 
                                  
                             </select>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="Permissions">Permissions</label>
+                            <input
+                                type="text"
+                                id="permissions"
+                                name="permissions"
+                                value={formData.permissions}
+                                onChange={handleChange}
+                                placeholder="Can wiev"
+                                required
+                            />
                         </div>
                     </div>
                     <div className="form-row">
@@ -133,6 +157,9 @@ const AddUserPage = () => {
                                 <option value="İskele Branch">İskele Branch</option>
                             </select>
                         </div>
+                        <div className="form-group">
+                          
+                        </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group">
@@ -158,6 +185,9 @@ const AddUserPage = () => {
                                 placeholder="##########"
                                 required
                             />
+                        </div>
+                        <div className="form-group">
+                           
                         </div>
                     </div>
                     <div className="form-row">
@@ -186,7 +216,11 @@ const AddUserPage = () => {
                                 required
                             />
                         </div>
+                        <div className="form-group">
+                       
+                        </div>
                     </div>
+                    
                     <button type="submit" className="register-button">KULLANICI EKLE</button>
                 </form>
             </div>
