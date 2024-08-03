@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: "Montserrat", sans-serif;
 }
 
-.container{
+.container {
     height: 99vh;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.layout{
+.layout {
     display: flex;
     height: 100%;
     margin: .3rem;
 }
 
-main{
+main {
     width: 100%;
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
     background: white;
@@ -31,19 +31,15 @@ main{
 }
 
 
-@media (max-width: 870px) {
-    
-    
-}
+@media (max-width: 870px) {}
 
-.login-container{
+.login-container {
 
     min-width: 800px;
 }
 
-.count-container{
+.count-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-

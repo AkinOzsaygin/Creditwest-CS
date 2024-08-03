@@ -1,9 +1,9 @@
-.side-bar{
+.side-bar {
     /* background: rgb(250, 250, 250); */
     background: white;
     width: 17%;
     max-width: 200px;
-   
+    height: 100%;
     margin: .3rem;
 
     padding: .45rem .3rem;
@@ -13,13 +13,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    transition:  width 400ms ease;
-    
+
+    transition: width 400ms ease;
+
     /* transition: none; */
 }
 
-.nav-item{
+.nav-item {
     display: flex;
     align-items: center;
     width: 100%;
@@ -35,37 +35,37 @@
     color: white;
 
     font-weight: 500;
-   
+
 }
 
 .nav-item:hover {
     opacity: .9;
 }
 
-.nav-item-text{
+.nav-item-text {
     font-size: .8rem;
     margin-left: .4rem;
-    transition:  font-size 0ms ease 300ms ;
+    transition: font-size 0ms ease 300ms;
 }
 
-.sidebar-icon{
+.sidebar-icon {
     width: 22px;
     height: 22px;
 }
 
 @media (max-width: 1200px) {
 
-    .nav-item-text{
-        transition:  font-size 10ms ease;
+    .nav-item-text {
+        transition: font-size 10ms ease;
         font-size: 0rem;
     }
 
-    .side-bar{
+    .side-bar {
         width: 70px;
-        transition:  width 600ms ease;
+        transition: width 600ms ease;
     }
 
-    .sidebar-icon{
+    .sidebar-icon {
         position: relative;
         top: 50%;
         left: 50%;

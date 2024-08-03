@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../../css/register-page.css';
+import { v4 as uuid } from 'uuid'
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
@@ -12,9 +13,44 @@ const AddUserPage = () => {
         email: '',
         phoneNumber: '',
         password: '',
-        id:'',
-        permissions:''
+        id: '',
+        permissions: ''
     });
+
+    const [permissions, setPermissions] = useState([]);
+    const [selectedPermissions, setSelectedPermissions] = useState([]);
+
+
+    useEffect(() => {
+        const getPermissions = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/permissions/')
+                const data = await response.json()
+                setPermissions(data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getPermissions();
+    }, [])
+
+
+    const selectPermission = (perId) => {
+        const selectedPermission = permissions.find(per => per.id === perId)
+        setSelectedPermissions([selectedPermission, ...selectedPermissions])
+
+        const updatedPermissions = permissions.filter(per => per.id !== perId)
+        setPermissions(updatedPermissions)
+    }
+
+    const removePermission = (perID) => {
+        const removedPermission = selectedPermissions.find(per => per.id === perID)
+        setPermissions([removedPermission, ...permissions])
+
+        const updatedSelectedPermissons = selectedPermissions.filter(per => per.id !== perID)
+        setSelectedPermissions(updatedSelectedPermissons)
+    }
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -64,15 +100,13 @@ const AddUserPage = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="Permissions">Permissions</label>
-                            <input
-                                type="text"
-                                id="permissions"
-                                name="permissions"
-                                value={formData.permissions}
-                                onChange={handleChange}
-                                placeholder="Can wiev"
-                                required
-                            />
+                            <ul className="permission-list">
+                                {
+                                    permissions.length > 0
+                                        ? permissions.map(per => <li key={uuid()} onClick={() => selectPermission(per.id)}>{per.name}</li>)
+                                        : <p>Permissions</p>
+                                }
+                            </ul>
                         </div>
                     </div>
                     <div className="form-row">
@@ -101,21 +135,24 @@ const AddUserPage = () => {
                                 <option value="">Seçin</option>
                                 <option value="Admin">Admin</option>
                                 <option value="User">User</option>
-                                
-                                 
+
+
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="Permissions">Permissions</label>
-                            <input
-                                type="text"
-                                id="permissions"
-                                name="permissions"
-                                value={formData.permissions}
-                                onChange={handleChange}
-                                placeholder="Can wiev"
-                                required
-                            />
+                            <label htmlFor="Permissions">Permissionszz</label>
+                            <ul className="permission-list">
+                                {
+                                    selectedPermissions.length > 0
+                                        ? selectedPermissions.map(per =>
+                                            <li
+                                                onClick={() => removePermission(per.id)}
+                                                key={uuid()}>
+                                                {per.name}
+                                            </li>)
+                                        : "No permission Selected"
+                                }
+                            </ul>
                         </div>
                     </div>
                     <div className="form-row">
@@ -158,7 +195,7 @@ const AddUserPage = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                          
+
                         </div>
                     </div>
                     <div className="form-row">
@@ -187,7 +224,7 @@ const AddUserPage = () => {
                             />
                         </div>
                         <div className="form-group">
-                           
+
                         </div>
                     </div>
                     <div className="form-row">
@@ -202,7 +239,7 @@ const AddUserPage = () => {
                                 placeholder="************"
                                 required
                             />
-                            
+
                         </div>
                         <div className="form-group">
                             <label htmlFor="Kimlik numarası">Kimlik numarası</label>
@@ -217,10 +254,10 @@ const AddUserPage = () => {
                             />
                         </div>
                         <div className="form-group">
-                       
+
                         </div>
                     </div>
-                    
+
                     <button type="submit" className="register-button">KULLANICI EKLE</button>
                 </form>
             </div>

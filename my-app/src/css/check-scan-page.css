@@ -7,6 +7,7 @@
 }
 
 .wrapper {
+    height: 100%;
     width: 100%;
     margin: .3rem;
     border: none;
@@ -20,7 +21,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 6fr 7fr;
     border: none;
-    gap: 7px ;
+    gap: 7px;
     font-size: .8rem;
     position: relative;
     margin-bottom: .1rem;
@@ -44,7 +45,7 @@
     padding: .5rem;
 }
 
-.check-scan-page-sub-title{
+.check-scan-page-sub-title {
     font-size: .9rem;
     font-weight: 550;
     color: rgba(0, 0, 0, 0.767);
@@ -52,13 +53,13 @@
 }
 
 .check-image-container,
-.check-details-container{
+.check-details-container {
     display: flex;
     flex-direction: column;
 }
 
 /* Scanner Details */
-.scanner-details-container{
+.scanner-details-container {
     width: 100%;
     height: 32%;
     display: flex;
@@ -85,7 +86,7 @@
     cursor: pointer;
 }
 
-.check-scan-button:hover{
+.check-scan-button:hover {
     opacity: .85;
 }
 
@@ -144,7 +145,7 @@
     width: 100%;
 }
 
-.check-image-buttons-container{
+.check-image-buttons-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -187,7 +188,7 @@
 
 
 /* Scanned Checks */
-.scanned-checks-container{
+.scanned-checks-container {
     grid-column: 1 / 3;
     height: 100%;
 }
@@ -203,9 +204,10 @@
 
 .scanned-checks-table {
     width: 100%;
+    height: 100%;
 }
 
-.table-wrapper {
+.scanned-checks-table-wrapper {
     max-height: 330px;
     overflow-y: scroll;
 }
@@ -243,7 +245,7 @@ td {
     top: 0px;
 }
 
-.header-row th{
+.header-row th {
     text-align: start;
     text-indent: 10px;
 }
@@ -289,7 +291,7 @@ td {
         margin-left: .3rem;
     }
 
-    .check-scan-page-sub-title{
+    .check-scan-page-sub-title {
         font-size: .8rem;
         font-weight: 550;
         color: rgba(0, 0, 0, 0.767);
