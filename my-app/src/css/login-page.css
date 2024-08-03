@@ -1,5 +1,5 @@
 .login-page {
-    height: 100%; /* boyut% dersek parentin boyutuna göre boyutlandırır, vh dersek de ekranın boyutuna göre boyutlandırır */
+    height: 100%; /* boyut% dersek parentin boyutuna göre boyutlandırır, vh dersek de ekranın boyutuna göre boyutlandırır */   
 }
 
 .login-container {
@@ -17,12 +17,11 @@
 }
 
 .login-form {
-
     display: flex;
     flex-direction: column;
     padding: 10px 5px;
     justify-content: center;
-    max-width: 550px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -33,50 +32,46 @@
 }
 
 .login-image-container {
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-right: 2px;
     
-    border-right-color: #015da97b;
+    border-right-color: #015da92d;
     border-right-style: solid;
 }
 
 .login-image {
-  
-    width: 70%;
-    
+    width: 65%;
 }
 
 .logo-text {
     font-weight: bold;
     text-align: center;
-    font-size: 42px;
-    
+    font-size: 2.8rem;
     color: #015CA9;
 }
 
 .logo-text span {
-    font-size: 42px;
     font-weight: bold;
     color: #DC3545 ;
 }
 
 .check-scanner-text {
-    
     text-align: center;
-    font-size: 42px;
-   font-weight: bold;
+    font-size: 4.5rem;
+    font-weight: bold;
     color: #015CA9;
 }
 
 .login-title {
     text-decoration: none;
+    text-transform: uppercase;
     text-align: center;
     font-size: 40px;
     margin-bottom: 60px; 
+    color: #074e88;
 }
 
 .login-form p {
@@ -94,13 +89,14 @@
 }
 
 .login-form input {
+    text-indent: 10px;
     background-color: rgba(75, 51, 51, 0.315);
     border-radius: 5px;
     border-width: 2px;
     border: 1px solid #015CA9;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.438);
     margin-bottom: 20px; 
-    padding: 10px; 
+    padding: 15px 0; 
     font-size: 15px; 
     background-color: transparent;
 }
