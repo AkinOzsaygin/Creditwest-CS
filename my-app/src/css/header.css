@@ -1,5 +1,5 @@
-.header{
-    position:sticky;
+.header {
+    position: sticky;
     width: 100%;
     padding: 1.3rem 2rem;
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
@@ -10,18 +10,19 @@
     border-radius: 5px; */
 }
 
-.header h1{
+.header h1 {
     color: #015CA9;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    margin-left: .3rem;
 }
 
-.header-flex-group{
+.header-flex-group {
     display: flex;
     align-items: center;
 }
 
-.username-text{
+.username-text {
     color: #015CA9;
     font-weight: 600;
     font-size: .8rem;

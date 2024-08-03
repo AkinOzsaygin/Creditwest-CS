@@ -32,14 +32,3 @@ main {
 
 
 @media (max-width: 870px) {}
-
-.login-container {
-
-    min-width: 800px;
-}
-
-.count-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

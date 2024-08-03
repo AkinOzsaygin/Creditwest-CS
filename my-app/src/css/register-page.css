@@ -7,15 +7,16 @@
 
 .register-container {
     background: #fff;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(69, 189, 189, 0.953);
+    padding: .5rem;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
+    border-radius: 4px;
     width: 100%;
     height: 100%;
 }
 
 .register-title {
-    font-size: 24px;
+    font-size: 15px;
+    text-decoration: underline;
     color: #015CA9;
     margin-bottom: 20px;
 }
@@ -78,7 +79,7 @@
 
 .permission-list {
     list-style: none;
-    height: 200px;
+    height: 10px;
     overflow-x: scroll;
 }
 

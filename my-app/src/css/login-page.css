@@ -14,7 +14,6 @@
     background-color: rgb(255, 255, 255);
     /* Arka plan rengini beyaz yapar */
     min-width: 800px;
-
 }
 
 .login-image-container,
@@ -26,7 +25,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    padding: 14px 5px;
+    padding: 10px 5px;
     justify-content: flex-end;
     max-width: 500px;
     margin: 0 auto;
@@ -51,6 +50,7 @@
 
 .login-image {
     width: 65%;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.338))
 }
 
 .logo-text {
@@ -58,6 +58,7 @@
     text-align: center;
     font-size: 2.8rem;
     color: #015CA9;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.338);
 }
 
 .logo-text span {
@@ -70,15 +71,16 @@
     font-size: 4.5rem;
     font-weight: bold;
     color: #015CA9;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.338);
 }
 
 .login-title {
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-align: center;
     font-size: 40px;
     margin-bottom: 60px;
-    color: #074e88;
+    color: #0b5ea2;
 }
 
 .login-form p {
@@ -125,4 +127,32 @@
 
 .login-button:active {
     opacity: .8;
+}
+
+
+@media (max-width: 1500px) {
+    .logo-text {
+        font-weight: bold;
+        text-align: center;
+        font-size: 2.4rem;
+        color: #015CA9;
+    }
+
+    .logo-text span {
+        font-weight: bold;
+        color: #DC3545;
+    }
+
+    .check-scanner-text {
+        text-align: center;
+        font-size: 4.1rem;
+        font-weight: bold;
+        color: #015CA9;
+    }
+
+    .login-image {
+        width: 68%;
+        margin-bottom: 1.3rem;
+    }
+
 }

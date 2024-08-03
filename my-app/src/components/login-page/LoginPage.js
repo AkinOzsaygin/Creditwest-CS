@@ -11,8 +11,8 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
-    const {setAuth} = useAuth();
-    
+    const { setAuth } = useAuth();
+
     useEffect(() => {
         // Password validation
         if (password && password.length < 8) {
@@ -33,16 +33,16 @@ const LoginPage = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (username === 'Admin' && password.length >= 8 && !usernameError) {
-            setAuth({user: username, roles:[5150]})
-            localStorage.setItem('auth', JSON.stringify({user: username, roles: [5150]}));
+            setAuth({ user: username, roles: [5150] })
+            localStorage.setItem('auth', JSON.stringify({ user: username, roles: [5150] }));
             navigate("/layout");
-        } else if (username === 'Manager' && password.length >= 8 && !usernameError){
-            setAuth({user: username, roles:[1984]});
-            localStorage.setItem('auth', JSON.stringify({user: username, roles:[1984]}));
+        } else if (username === 'Manager' && password.length >= 8 && !usernameError) {
+            setAuth({ user: username, roles: [1984] });
+            localStorage.setItem('auth', JSON.stringify({ user: username, roles: [1984] }));
             navigate("/layout");
-        } else if(username === 'Personel' && password.length >= 8 && !usernameError){
-            setAuth({user: username, roles: [2001]});
-            localStorage.setItem('auth', JSON.stringify({user: username, roles:[2001]}));
+        } else if (username === 'Personel' && password.length >= 8 && !usernameError) {
+            setAuth({ user: username, roles: [2001] });
+            localStorage.setItem('auth', JSON.stringify({ user: username, roles: [2001] }));
             navigate("/layout");
         } else (
             alert("Geçersiz kullanıcı adı veya şifre")
@@ -56,10 +56,10 @@ const LoginPage = () => {
                     <img className="login-image" src={logoImage} alt="CreditWest Software Genius Check Scanner"></img>
                     <p className="check-scanner-text">CHECK SCANNER</p>
                     <p className="logo-text">CREDİT<span>W</span>EST SOFTWARE GENIUS</p>
-                    
+
                 </div>
                 <form className="login-form" onSubmit={handleSubmit}>
-                    <h3 className="login-title">Gİrİş</h3>
+                    <h3 className="login-title">Giriş</h3>
                     <p>Lütfen giriş yapmak için kullanıcı adınızı ve şifrenizi giriniz. Eğer kullanıcı adınızı veya şifrenizi bilmiyorsanız lütfen admin ile iletişime geçiniz.</p>
                     <div className="user-info">
                         <label htmlFor="username">Kullanıcı adı</label>

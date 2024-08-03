@@ -71,7 +71,7 @@ const AddUserPage = () => {
     return (
         <main className="register-page">
             <div className="register-container">
-                <h3 className="register-title">KULLANICI EKLE</h3>
+                <h3 className="register-title">Kullanıcı Ekle</h3>
                 <form className="register-form" onSubmit={handleSubmit}>
                     <div className="form-row">
                         <div className="form-group">
