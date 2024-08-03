@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../../css/register-page.css';
 import { v4 as uuid } from 'uuid'
-
+import permissionsData from "../../data/permissions";
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -17,22 +17,23 @@ const AddUserPage = () => {
         permissions: ''
     });
 
-    const [permissions, setPermissions] = useState([]);
+    const [permissions, setPermissions] = useState(permissionsData);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
 
-
-    useEffect(() => {
-        const getPermissions = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/permissions/')
-                const data = await response.json()
-                setPermissions(data);
-            } catch (e) {
-                console.log(e);
-            }
-        }
-        getPermissions();
-    }, [])
+    //Bunlari silme Akin
+    // useEffect(() => {
+    //     const getPermissions = async () => {
+    //         try {
+    //             const response = await fetch('http://127.0.0.1:8000/permissions/')
+    //             const data = await response.json()
+    //             console.log(data);
+    //             setPermissions(data);
+    //         } catch (e) {
+    //             console.log(e);
+    //         }
+    //     }
+    //     getPermissions();
+    // }, [])
 
 
     const selectPermission = (perId) => {
@@ -99,7 +100,7 @@ const AddUserPage = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="Permissions">Permissions</label>
+                            <label htmlFor="Permissions">Available Permissions</label>
                             <ul className="permission-list">
                                 {
                                     permissions.length > 0
@@ -140,7 +141,7 @@ const AddUserPage = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="Permissions">Permissionszz</label>
+                            <label htmlFor="Permissions">Selected Permissions</label>
                             <ul className="permission-list">
                                 {
                                     selectedPermissions.length > 0

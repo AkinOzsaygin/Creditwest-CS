@@ -69,17 +69,13 @@
     width: 76%;
 }
 
-
-
 .register-button:hover {
     background-color: #b10f1f;
 }
 
-
-
 .permission-list {
     list-style: none;
-    height: 10px;
+    height: 100px;
     overflow-x: scroll;
 }
 

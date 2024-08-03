@@ -1,0 +1,40 @@
+.user-list-page {
+    margin: .3rem;
+    height: 100%;
+    padding: .3rem;
+}
+
+.user-list-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-group {
+    display: flex;
+    align-items: center;
+}
+
+.user-list-user-details {
+
+    display: flex;
+    height: 32%;
+}
+
+.user-list-user-details-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid orangered;
+
+}
+
+.use-list-user-search-filter-bar {
+    border: 1px solid orangered;
+    height: 8%;
+}
+
+.user-list-table {
+    border: 1px solid orangered;
+    height: 60%;
+}
