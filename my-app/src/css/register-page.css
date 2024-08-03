@@ -15,10 +15,10 @@
 }
 
 .register-title {
-    font-size: 15px;
-    text-decoration: underline;
+    font-size: 28px;
     color: #015CA9;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .register-form {

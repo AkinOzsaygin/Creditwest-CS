@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfo from "./UserDetails";
+import UserInfo from "./UserDetails/UserDetails";
 
 const UserListPage = () => {
     return (

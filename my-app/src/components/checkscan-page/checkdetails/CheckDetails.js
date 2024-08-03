@@ -1,8 +1,8 @@
 import React from "react";
 import { RotatingSquare, MagnifyingGlass } from 'react-loader-spinner';
 
-const CheckDetails = ({ checksequence, bankName, checkOwner ,accountNumber,  checkNumber, checkAmount, isLoading }) => {
-    
+const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, checkNumber, checkAmount, isLoading }) => {
+
     return (
         <div className="check-details-container">
             <h3 className="check-scan-page-sub-title">Çek Bilgileri</h3>

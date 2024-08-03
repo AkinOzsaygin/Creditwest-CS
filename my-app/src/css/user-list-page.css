@@ -1,40 +1,92 @@
 .user-list-page {
     margin: .3rem;
     height: 100%;
-    padding: .3rem;
 }
 
 .user-list-container {
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 5px 0;
 }
 
-.user-info-group {
+.user-list-user-info-group {
     display: flex;
     align-items: center;
 }
 
 .user-list-user-details {
-
     display: flex;
-    height: 32%;
+    height: 25%;
+    gap: 0 5px;
+}
+
+.user-list-user-details-column-wrapper,
+.user-list-user-button-column,
+.user-list-user-permissions-column {
+    border-radius: 4px;
 }
 
 .user-list-user-details-column {
+    padding: .4rem;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    border: 1px solid orangered;
-
+    justify-content: space-between;
+    width: 50%;
 }
 
+.user-list-details-button-column {
+    padding: .6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px 0;
+    width: 10%;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
+}
+
+.user-list-update-button,
+.user-list-delete-button {
+    height: 25%;
+    border: none;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
+}
+
+.user-list-update-button {
+    background: #015CA9;
+}
+
+.user-list-delete-button {
+    background: rgb(212, 24, 24);
+    ;
+}
+
+.user-list-user-permissions-column {
+    width: 20%;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
+}
+
+
 .use-list-user-search-filter-bar {
-    border: 1px solid orangered;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
     height: 8%;
 }
 
 .user-list-table {
-    border: 1px solid orangered;
-    height: 60%;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
+    height: 67%;
+}
+
+label {
+    font-size: .82rem;
+    font-weight: 500;
+}
+
+.user-list-details-column-wrapper {
+    display: flex;
+    width: 50%;
+    box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
 }

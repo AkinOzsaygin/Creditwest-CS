@@ -13,8 +13,9 @@
 .header h1 {
     color: #015CA9;
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 650;
     margin-left: .3rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.238);
 }
 
 .header-flex-group {

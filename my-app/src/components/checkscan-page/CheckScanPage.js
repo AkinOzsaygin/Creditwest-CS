@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import ScannerDetails from "./ScannerDetail";
-import CheckDetails from "./CheckDetails";
+import ScannerDetails from "./scannerdetails/ScannerDetail";
+import CheckDetails from "./checkdetails/CheckDetails";
 import CheckImage from "./checkImage/CheckImage";
 import ScannedChecks from "./scanned-checks/ScannedChecks";
 import placeHolderImage from '../../images/placeholder-image.png';
@@ -14,7 +14,7 @@ import useAuth from "../../hooks.js/useAuth";
 const CheckScanPage = () => {
 
     const { auth } = useAuth();
-    
+
     const checkData = fakeCheckData;
 
     const checkSequnceReverse = useRef(false);
@@ -40,13 +40,13 @@ const CheckScanPage = () => {
     const [currentCheck, setCurrentCheck] = useState({
         checkSequnce: 0,
         checkNumber: '-',
-        checkOwner:'-',
+        checkOwner: '-',
         accountNumber: '-',
-        bankName:'-',
-        branchName:'-',
-        regionName:'-',
+        bankName: '-',
+        branchName: '-',
+        regionName: '-',
         payeeName: '-',
-        checkDate:'-',
+        checkDate: '-',
         checkCurrency: '-',
         checkAmount: '-',
         checkImage: placeHolderImage,
