@@ -8,7 +8,7 @@ const UserListPage = () => {
 
                 <UserInfo />
 
-                <div className="use-list-user-search-filter-bar">
+                <div className="user-list-user-search-filter-bar">
 
                 </div>
 

@@ -21,6 +21,18 @@
     gap: 0 5px;
 }
 
+.user-list-details-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: .3rem;
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
 .user-list-user-details-column-wrapper,
 .user-list-user-button-column,
 .user-list-user-permissions-column {
@@ -70,7 +82,7 @@
 }
 
 
-.use-list-user-search-filter-bar {
+.user-list-user-search-filter-bar {
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
     height: 8%;
 }
@@ -89,4 +101,53 @@ label {
     display: flex;
     width: 50%;
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
+}
+
+.user-list-user-info-text {
+    font-size: .85rem;
+    margin-left: .2rem;
+}
+
+.user-list-permissions-list,
+.user-list-selected-permissions-list {
+    list-style: none;
+    overflow-y: scroll;
+}
+
+.user-list-permissions-list li,
+.user-list-selected-permissions-list li {
+    font-size: .8rem;
+    padding: .2rem 0;
+    cursor: pointer;
+    text-indent: 3px;
+
+    &:hover {
+        background: green;
+        color: white;
+    }
+}
+
+.user-list-selected-permissions-list li:hover {
+    background: rgb(212, 24, 24);
+}
+
+.user-list-user-permissions-column {
+    overflow-y: scroll;
+    padding: .3rem;
+}
+
+.user-list-user-permissions-column h5 {
+    font-size: .8rem;
+    text-decoration: underline;
+    margin-bottom: .2rem;
+}
+
+h5 {
+    font-size: .8rem;
+    text-decoration: underline;
+    margin-bottom: .2rem;
+}
+
+.no-permission-text {
+    font-size: .8rem;
 }

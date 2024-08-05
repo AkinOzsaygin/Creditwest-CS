@@ -1,100 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserDetailsPermissions from './UserDetailsPermissions'
 import UserDetailsSelectedPermissions from './UserDetailsSelectedPermissions'
 import UserDetailsButtons from './UserDetailsButtons'
+import UserInfos from './UserInfos'
+import permissionsData from "../../../data/permissions";
 
-const UserInfo = () => {
+const UserDetails = () => {
+
+    const [permissions, setPermissions] = useState(permissionsData);
+    const [selectedPermissions, setSelectedPermissions] = useState([]);
+
+    const selectPermission = (perId) => {
+        const selectedPermission = permissions.find(per => per.id === perId)
+        setSelectedPermissions([selectedPermission, ...selectedPermissions])
+
+        const updatedPermissions = permissions.filter(per => per.id !== perId)
+        setPermissions(updatedPermissions)
+    }
+
+    const removePermission = (perID) => {
+        const removedPermission = selectedPermissions.find(per => per.id === perID)
+        setPermissions([removedPermission, ...permissions])
+
+        const updatedSelectedPermissons = selectedPermissions.filter(per => per.id !== perID)
+        setSelectedPermissions(updatedSelectedPermissons)
+    }
+
     return (
         <div className="user-list-user-details">
 
-            <div className='user-list-details-column-wrapper'>
+            <UserInfos />
 
-                <div className='user-list-user-details-column'>
+            <UserDetailsPermissions permissions={permissions} selectPermission={selectPermission} />
 
-                    <div className="user-list-user-info-group">
-                        <label>
-                            id:
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Kullanıcı Adı:
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Sifre:
-                        </label>
-                        <p>-</p>
-                    </div>
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Email:
-                        </label>
-                        <p>-</p>
-                    </div>
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Kimlik Numarası:
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                </div>
-
-                <div className='user-list-user-details-column'>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Ad:
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Soyad:
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Telefon Numarası
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Bölge
-                        </label>
-                        <p>-</p>
-                    </div>
-
-                    <div className="user-list-user-info-group">
-                        <label>
-                            Grup:
-                        </label>
-                        <p>-</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <UserDetailsPermissions />
-
-            <UserDetailsSelectedPermissions />
+            <UserDetailsSelectedPermissions selectedPermissions={selectedPermissions} removePermission={removePermission} />
 
             <UserDetailsButtons />
+
         </div>
     )
 }
 
-export default UserInfo
+export default UserDetails
