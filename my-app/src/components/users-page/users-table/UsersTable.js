@@ -12,7 +12,6 @@ const UsersTable = ({ setCurrentUser, users }) => {
         <div className="user-list-table">
 
             <h3 className="container-sub-title">Kullanıcılar</h3>
-
             <Table>
                 <TableHeaders headers={headerNames} className={'table-header'} />
                 <TableItems items={users} setCurrentItem={setCurrentUser} />

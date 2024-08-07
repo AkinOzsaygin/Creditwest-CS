@@ -1,7 +1,10 @@
-import React from 'react'
-import { IoMdSearch } from "react-icons/io";
+import React, { useState } from 'react'
+
+import { FaArrowDownWideShort } from "react-icons/fa6";
+import { HiMiniBarsArrowDown } from "react-icons/hi2";
 
 const UsersFilter = () => {
+    const [showDropDown, setShowDropDown] = useState(false)
     return (
         <div className="user-list-user-search-filter-bar">
             <div className="user-list-search-flex">
@@ -9,8 +12,11 @@ const UsersFilter = () => {
                     type="text"
                     placeholder="Kullanıcı Ara"
                 />
-                <button className="search-button">
-                    {<IoMdSearch size={22} />}
+                <button className="search-button" onClick={() => setShowDropDown(!showDropDown)}>
+                    {<HiMiniBarsArrowDown size={24} />}
+                    {
+                        showDropDown && <div className='search-button-drop-down'>  Hello </div>
+                    }
                 </button>
             </div>
 

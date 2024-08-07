@@ -10,6 +10,7 @@ const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, chec
             {!isLoading
                 ? <>
                     <div className="check-detail-labels-container">
+
                         <div className="check-detail-label-group">
                             <label className="check-detail-label">Çek Sırası:</label>
                             <span className="check-detail-text">{checksequence}</span>

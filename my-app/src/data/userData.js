@@ -48,8 +48,7 @@ const userData = [
         mobileNumber: "12321312",
         branch: "Lefkoşa",
         grup: "Manager"
-    }
-    ,
+    },
     {
         id: 5,
         username: "Kadir",

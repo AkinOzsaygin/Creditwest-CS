@@ -36,7 +36,7 @@ td {
 }
 
 .scanned-checks-table-wrapper {
-    max-height: 330px;
+    max-height: 320px;
     overflow-y: scroll;
 }
 

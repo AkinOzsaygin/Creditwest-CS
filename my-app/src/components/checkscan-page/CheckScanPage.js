@@ -3,7 +3,7 @@ import ScannerDetails from "./scannerdetails/ScannerDetail";
 import CheckDetails from "./checkdetails/CheckDetails";
 import CheckImage from "./checkImage/CheckImage";
 import ScannedChecks from "./scanned-checks/ScannedChecks";
-import placeHolderImage from '../../images/placeholder-image.png';
+import placeHolderImage from '../../images/Filling-Out-A-Check-Date.webp';
 import CheckView from "./checkImage/CheckView";
 
 import fakeCheckData from "../../data/checkdata";

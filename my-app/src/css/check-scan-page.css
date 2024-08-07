@@ -86,7 +86,8 @@
 }
 
 .check-scan-button:hover {
-    opacity: .85;
+    background: #015CA9;
+    color: white;
 }
 
 .check-status-text {
@@ -181,6 +182,11 @@
     padding: .4rem 2rem;
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
     /* background: green; */
+}
+
+.view-check-button:hover {
+    background: green;
+    color: white;
 }
 
 /* Scanned Checks */

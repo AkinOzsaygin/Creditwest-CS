@@ -1,21 +1,24 @@
 import React from "react";
-import ScannedChecksTable from "./ScannedChecksTable";
+import TableHeaders from '../../table-components/TableHeaders.js'
+import Table from '../../table-components/Table.js'
+import TableItems from '../../table-components/TableItems';
 
 
+const ScannedChecks = ({ scannedChecks, setCurrentCheck }) => {
 
-const ScannedChecks = ({ scannedChecks, setCurrentCheck, setScannedChecks }) => {
-
+    const headerNames = ['Cek Sırası', 'Cek Numarası', 'Cek Sahibi', 'Hesap Numarası', 'Banka', 'Sube', 'Bolge', 'Odenecek Kisi', 'Cek Tarihi', 'Para Birimi', 'Cek Miktari']
 
     return (
         <div className="scanned-checks-container">
 
             <h3 className="container-sub-title">Okunmus Çekler</h3>
 
-            <ScannedChecksTable
-                scannedChecks={scannedChecks}
-                setCurrentCheck={setCurrentCheck}
-                setScannedChecks={setScannedChecks}
-            />
+
+            <Table>
+                <TableHeaders headers={headerNames} />
+                <TableItems items={scannedChecks} setCurrentItem={setCurrentCheck} />
+            </Table>
+
 
         </div>
     );
