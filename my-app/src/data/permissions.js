@@ -54,6 +54,20 @@ const permissions = [
         content_type: 1,
         name: "can delete user"
     },
+
+    ,
+    {
+        id: 10,
+        codename: "update_user",
+        content_type: 1,
+        name: "can update user"
+    },
+    {
+        id: 11,
+        codename: "delete_user",
+        content_type: 1,
+        name: "can delete user"
+    },
 ]
 
 export default permissions

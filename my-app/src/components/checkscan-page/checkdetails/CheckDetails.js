@@ -5,7 +5,7 @@ const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, chec
 
     return (
         <div className="check-details-container">
-            <h3 className="check-scan-page-sub-title">Çek Bilgileri</h3>
+            <h3 className="container-sub-title">Çek Bilgileri</h3>
 
             {!isLoading
                 ? <>

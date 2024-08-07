@@ -1,44 +1,45 @@
 import React from 'react'
 
-const UserInfos = () => {
+const UserInfos = ({ currentUser }) => {
     return (
         <div className='user-list-details-column-wrapper'>
 
-            <h5>Kullanici bilgileri</h5>
+            <h5 className=''>Kullanıcı bilgileri</h5>
+
             <div className='flex'>
                 <div className='user-list-user-details-column'>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             id:
                         </label>
-                        <p className='user-list-user-info-text'>1</p>
+                        <p className='user-list-user-info-text'>{currentUser.id}</p>
                     </div>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Kullanıcı Adı:
                         </label>
-                        <p className='user-list-user-info-text'>Kadir1234</p>
+                        <p className='user-list-user-info-text'>{currentUser.username}</p>
                     </div>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Sifre:
                         </label>
-                        <p className='user-list-user-info-text'>HASHED_PASSWORD</p>
+                        <p className='user-list-user-info-text'>{currentUser.password}</p>
                     </div>
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Email:
                         </label>
-                        <p className='user-list-user-info-text'>kadir@mail.con</p>
+                        <p className='user-list-user-info-text'>{currentUser.email}</p>
                     </div>
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Kimlik Numarası:
                         </label>
-                        <p className='user-list-user-info-text'>1012303012</p>
+                        <p className='user-list-user-info-text'>{currentUser.userId}</p>
                     </div>
 
                 </div>
@@ -46,38 +47,38 @@ const UserInfos = () => {
                 <div className='user-list-user-details-column'>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Ad:
                         </label>
-                        <p className='user-list-user-info-text'>Kadir</p>
+                        <p className='user-list-user-info-text'>{currentUser.name}</p>
                     </div>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Soyad:
                         </label>
-                        <p className='user-list-user-info-text'>Senbulbul</p>
+                        <p className='user-list-user-info-text'>{currentUser.surname}</p>
                     </div>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Telefon Numarası
                         </label>
-                        <p className='user-list-user-info-text'>1010102002</p>
+                        <p className='user-list-user-info-text'>{currentUser.mobileNumber}</p>
                     </div>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Bölge
                         </label>
-                        <p className='user-list-user-info-text'>Lefkosa</p>
+                        <p className='user-list-user-info-text'>{currentUser.branch}</p>
                     </div>
 
                     <div className="user-list-user-info-group">
-                        <label>
+                        <label className='user-info-label'>
                             Grup:
                         </label>
-                        <p className='user-list-user-info-text'>Manager</p>
+                        <p className='user-list-user-info-text'>{currentUser.grup}</p>
 
                     </div>
 

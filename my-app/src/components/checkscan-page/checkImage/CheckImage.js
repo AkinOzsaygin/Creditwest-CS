@@ -8,42 +8,42 @@ const CheckImage = ({ checkImage, isLoading, showCheckImage, setCurrentCheck, sc
 
 
     const style = {
-        opacity: isDisabledButtonPrevious ?  '0.6' : '1'
+        opacity: isDisabledButtonPrevious ? '0.6' : '1'
     }
 
     const style1 = {
-        opacity: isDisabledButtonNext ?  '0.6' : '1'
+        opacity: isDisabledButtonNext ? '0.6' : '1'
     }
 
     useEffect(() => {
 
-        if(checkIndex < 1 || scannedChecks.length === 0){
+        if (checkIndex < 1 || scannedChecks.length === 0) {
             setDisableButtonPrevious(true);
-        }else{
+        } else {
             setDisableButtonPrevious(false);
         }
 
-    },[checkIndex, scannedChecks]);
+    }, [checkIndex, scannedChecks]);
 
     useEffect(() => {
 
-        if(checkIndex + 1 === scannedChecks.length || scannedChecks.length === 0){
+        if (checkIndex + 1 === scannedChecks.length || scannedChecks.length === 0) {
             setDisableButtonNext(true)
-        }else{
+        } else {
             setDisableButtonNext(false)
         };
 
-    },[checkIndex, scannedChecks]);
+    }, [checkIndex, scannedChecks]);
 
 
     const previousCheck = () => {
-        if(!isDisabledButtonPrevious){
+        if (!isDisabledButtonPrevious) {
             setCurrentCheck(scannedChecks[checkIndex - 1]);
         };
     };
 
     const nextCheck = () => {
-        if(scannedChecks.length - 1 !== checkIndex){
+        if (scannedChecks.length - 1 !== checkIndex) {
             setCurrentCheck(scannedChecks[checkIndex + 1])
         }
     };
@@ -51,7 +51,7 @@ const CheckImage = ({ checkImage, isLoading, showCheckImage, setCurrentCheck, sc
     return (
         <div className="check-image-container">
 
-            <h3 className="check-scan-page-sub-title">Çek Resmi</h3>
+            <h3 className="container-sub-title">Çek Resmi</h3>
 
             {
                 !isLoading
@@ -69,24 +69,24 @@ const CheckImage = ({ checkImage, isLoading, showCheckImage, setCurrentCheck, sc
             }
 
             <div className="check-image-buttons-container">
-                <button 
+                <button
                     style={style}
-                    disabled={isDisabledButtonPrevious} 
-                    onClick={previousCheck} 
+                    disabled={isDisabledButtonPrevious}
+                    onClick={previousCheck}
                     className="check-scan-button">
                     Önceki Çek
                 </button>
 
-                <button 
-                    onClick={showCheckImage} 
+                <button
+                    onClick={showCheckImage}
                     className="check-scan-button view-check-button">
                     Çeki Göster
                 </button>
 
-                <button 
-                    style={style1} 
-                    disabled={isDisabledButtonNext} 
-                    onClick={nextCheck} 
+                <button
+                    style={style1}
+                    disabled={isDisabledButtonNext}
+                    onClick={nextCheck}
                     className="check-scan-button">
                     Sonraki Çek
                 </button>

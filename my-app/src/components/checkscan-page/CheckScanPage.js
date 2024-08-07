@@ -19,8 +19,6 @@ const CheckScanPage = () => {
 
     const checkSequnceReverse = useRef(false);
 
-    const checkAmountReverse = useRef(false);
-
     //Tablo daki indexi tutabilmek currentIndex degeri
     const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -51,7 +49,6 @@ const CheckScanPage = () => {
         checkAmount: '-',
         checkImage: placeHolderImage,
         isActive: false,
-
     });
 
     ///currentCheck her degistiginde currentIndex de degisecek
@@ -89,7 +86,7 @@ const CheckScanPage = () => {
     //Cek okunma taklidi yap
     const checkScan = () => {
         const randomNum = Math.floor(Math.random() * 4);
-        const newCurrentCheck = { ...checkData[randomNum], checkSequnce: checkSequnce + 1, isActive: false };
+        const newCurrentCheck = { checkSequnce: checkSequnce + 1, isActive: false, ...checkData[randomNum] };
 
         setIsLoading(true); //isLoading true yukleme islemi baslatildi spinner-loading goster
 
@@ -107,9 +104,6 @@ const CheckScanPage = () => {
 
     };
 
-    const setCurrentCheckFromRow = (rowCheckData) => {
-        setCurrentCheck(rowCheckData);
-    };
 
     return (
         <div className="wrapper">
@@ -146,13 +140,13 @@ const CheckScanPage = () => {
                 {/* Okunmus ceklerin gosterildi tablo copmonent  */}
                 <ScannedChecks
                     checkSequnceReverse={checkSequnceReverse}
-                    setCurrentCheck={setCurrentCheckFromRow}
+                    setCurrentCheck={setCurrentCheck}
                     scannedChecks={scannedChecks}
                     setScannedChecks={setScannedChecks}
                 />
 
 
-                {/* Overlay copmonent  arka tarafi gölgelendirecek 
+                {/* Overlay copmonent  a                   rka tarafi gölgelendirecek 
                 CheckView copmonent  ceki daha buyuk boyutta ekranin ortasinda gosterecek */}
                 {
                     isCheckView &&

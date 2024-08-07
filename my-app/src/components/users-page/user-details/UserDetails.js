@@ -5,7 +5,7 @@ import UserDetailsButtons from './UserDetailsButtons'
 import UserInfos from './UserInfos'
 import permissionsData from "../../../data/permissions";
 
-const UserDetails = () => {
+const UserDetails = ({ currentUser }) => {
 
     const [permissions, setPermissions] = useState(permissionsData);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
@@ -26,10 +26,12 @@ const UserDetails = () => {
         setSelectedPermissions(updatedSelectedPermissons)
     }
 
-    return (
-        <div className="user-list-user-details">
+    console.log(currentUser);
 
-            <UserInfos />
+    return (
+        <div className="users-page-user-details ">
+
+            <UserInfos currentUser={currentUser} />
 
             <UserDetailsPermissions permissions={permissions} selectPermission={selectPermission} />
 
