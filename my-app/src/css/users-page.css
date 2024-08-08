@@ -159,10 +159,9 @@ label {
     padding: 0rem .3rem .3rem .3rem;
 }
 
-.user-list-user-permissions-column::-webkit-scrollbar {
-    /* display: none; */
-    /* margin-right: .1rem; */
-}
+/* .user-list-user-permissions-column::-webkit-scrollbar {
+
+} */
 
 
 

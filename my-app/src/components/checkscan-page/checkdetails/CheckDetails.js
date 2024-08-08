@@ -1,6 +1,6 @@
 import React from "react";
 import { RotatingSquare, MagnifyingGlass } from 'react-loader-spinner';
-
+import CheckDetail from "./CheckDetail";
 const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, checkNumber, checkAmount, isLoading }) => {
 
     return (
@@ -11,15 +11,11 @@ const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, chec
                 ? <>
                     <div className="check-detail-labels-container">
 
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Çek Sırası:</label>
-                            <span className="check-detail-text">{checksequence}</span>
-                        </div>
+                        <CheckDetail label={'Çek Sırası:'} text={checksequence} />
 
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Banka:</label>
-                            <span className="check-detail-text">{bankName}</span>
-                        </div>
+
+                        <CheckDetail label={'Banka:'} text={bankName} />
+
 
                         <div className="check-detail-label-group">
                             <label className="check-detail-label">Çek Sahibi:</label>
