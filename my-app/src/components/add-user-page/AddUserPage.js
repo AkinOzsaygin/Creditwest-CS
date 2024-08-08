@@ -61,9 +61,6 @@ const AddUserPage = () => {
                     <div className="row">
                         <div className="column">
 
-
-
-
                             <InputComponent
                                 label="İsim"
                                 type="text"

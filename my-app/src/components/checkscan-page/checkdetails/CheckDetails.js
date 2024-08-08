@@ -12,28 +12,15 @@ const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, chec
                 ? <>
                     <div className="check-detail-labels-container">
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ef1e287 (mesage)
                         <CheckDetail label={"Çek Sırası:"} text={checksequence} />
                         <CheckDetail label={"Banka:"} text={bankName} />
                         <CheckDetail label={"Çek Sahibi:"} text={checkOwner} />
                         <CheckDetail label={"Hesap Numarası:"} text={accountNumber} />
                         <CheckDetail label={"Çek Numarası:"} text={checkNumber} />
                         <CheckDetail label={"Çek Miktarı:"} text={checkAmount} />
-<<<<<<< HEAD
-
-=======
->>>>>>> ef1e287 (mesage)
                         <CheckDetail label={'Çek Sırası:'} text={checksequence} />
                         <CheckDetail label={'Banka:'} text={bankName} />
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> ef1e287 (mesage)
                     </div>
                 </>
                 : <MagnifyingGlass
