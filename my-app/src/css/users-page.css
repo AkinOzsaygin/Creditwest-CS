@@ -143,12 +143,19 @@ label {
     color: green;
 }
 
-.user-list-selected-permissions-list li:hover {
-    background: rgb(212, 24, 24);
+.user-list-selected-permissions-list li:hover .user-page-selected-permission-arrrow-left {
+    color: rgb(212, 24, 24);
+    ;
 }
 
-.user-page-selected-permission-arrrow {
+.user-list-selected-permissions-list li:hover {
+    color: rgb(212, 24, 24);
+    background: whitesmoke;
+}
 
+.user-page-selected-permission-arrrow,
+.user-page-selected-permission-arrrow-left
+{
     color: #015CA9;
 }
 
@@ -158,15 +165,6 @@ label {
     overflow-y: scroll;
     padding: 0rem .3rem .3rem .3rem;
 }
-
-.user-list-user-permissions-column::-webkit-scrollbar {
-    /* display: none; */
-    /* margin-right: .1rem; */
-}
-
-
-
-
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .user-list-permissions-list {

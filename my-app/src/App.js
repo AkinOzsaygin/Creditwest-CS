@@ -19,6 +19,7 @@ import UsersPage from "./components/users-page/UsersPage";
 import NotFoundedPage from "./components/error-page/NotFoundPage";
 import RequireAuth from "./middleware/RequireAuth";
 import ForbidenPage from "./components/error-page/ForbidenPage";
+import AddCustomerPage from "./components/addcustomer-page/AddCustomerPage";
 
 const ROLES = {
   user: 2001,
@@ -57,6 +58,10 @@ function App() {
 
               <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.manager]} />}>
                 <Route path="user-list" element={<UsersPage />}></Route>
+              </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.manager, ROLES.user]} />}>
+                <Route path="add-customer" element={<AddCustomerPage />}></Route>
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.manager, ROLES.user]} />}>

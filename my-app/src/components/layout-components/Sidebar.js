@@ -5,6 +5,7 @@ import { FaMoneyCheck } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa";
 import { FaListAlt } from "react-icons/fa";
 import { PiSealWarningFill } from "react-icons/pi";
+import { FaRegAddressCard } from "react-icons/fa6";
 import useAuth from '../../hooks.js/useAuth';
 
 const ROLES = {
@@ -31,8 +32,16 @@ const Sidebar = () => {
 
       <NavItem
         icon={<HiUserAdd className='sidebar-icon' color='white' />}
-        name={'Kullanici Ekle'}
+        name={'Kullanıcı Ekle'}
         link={'add-user'}
+        roles={auth.roles}
+        allowedRoles={[ROLES.admin, ROLES.manager]}
+      />
+
+      <NavItem
+        icon={<FaRegAddressCard className='sidebar-icon' color='white' />}
+        name={'Müşteri Ekle'}
+        link={'add-customer'}
         roles={auth.roles}
         allowedRoles={[ROLES.admin, ROLES.manager]}
       />

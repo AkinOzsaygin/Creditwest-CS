@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+
 
 const UserDetailsSelectedPermissions = ({ selectedPermissions }) => {
     return (
@@ -8,7 +10,11 @@ const UserDetailsSelectedPermissions = ({ selectedPermissions }) => {
             <ul className='user-list-selected-permissions-list'>
                 {
                     selectedPermissions.length > 0
-                        ? selectedPermissions.map(per => <li>{per.name}</li>)
+                        ? selectedPermissions.map(per => 
+                        <li>{per.name}
+                        
+                        <FaRegArrowAltCircleLeft className='user-page-selected-permission-arrrow-left'/>
+                        </li>)
                         : <p className='no-permission-text'>Kullanıcıya ait bir izin bulunmuyor !</p>
                 }
             </ul>

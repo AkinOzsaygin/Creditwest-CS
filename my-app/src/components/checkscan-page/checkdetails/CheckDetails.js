@@ -1,5 +1,6 @@
 import React from "react";
 import { RotatingSquare, MagnifyingGlass } from 'react-loader-spinner';
+import CheckDetail from "./CheckDetail";
 
 const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, checkNumber, checkAmount, isLoading }) => {
 
@@ -11,35 +12,12 @@ const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, chec
                 ? <>
                     <div className="check-detail-labels-container">
 
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Çek Sırası:</label>
-                            <span className="check-detail-text">{checksequence}</span>
-                        </div>
-
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Banka:</label>
-                            <span className="check-detail-text">{bankName}</span>
-                        </div>
-
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Çek Sahibi:</label>
-                            <span className="check-detail-text">{checkOwner}</span>
-                        </div>
-
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Hesap Numarası:</label>
-                            <span className="check-detail-text">{accountNumber}</span>
-                        </div>
-
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Çek  Numarası:</label>
-                            <span className="check-detail-text">{checkNumber}</span>
-                        </div>
-
-                        <div className="check-detail-label-group">
-                            <label className="check-detail-label">Çek Miktarı:</label>
-                            <span className="check-detail-text">{checkAmount}</span>
-                        </div>
+                        <CheckDetail label={"Çek Sırası:"} text={checksequence}/>
+                        <CheckDetail label={"Banka:"} text={bankName}/>
+                        <CheckDetail label={"Çek Sahibi:"} text={checkOwner}/>
+                        <CheckDetail label={"Hesap Numarası:"} text={accountNumber}/>
+                        <CheckDetail label={"Çek Numarası:"} text={checkNumber}/>
+                        <CheckDetail label={"Çek Miktarı:"} text={checkAmount}/>
 
                     </div>
                 </>
@@ -59,5 +37,4 @@ const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, chec
         </div>
     )
 };
-{/* <RotatingSquare color="#015CA9" wrapperClass="spinner" /> */ }
 export default CheckDetails;

@@ -11,7 +11,9 @@ const NavItem = ({ name, icon, link, roles, allowedRoles }) => {
     <>
       {allowed.current &&
         <NavLink
-          className='nav-item'
+          className={
+            ({ isActive }) => (isActive ? 'nav-item nav-item-active' : 'nav-item')
+          }
           to={link}>
           {icon}
           <span className='nav-item-text'>{name}</span>

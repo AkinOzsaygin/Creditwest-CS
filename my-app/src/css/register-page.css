@@ -45,10 +45,6 @@
     justify-content: space-between;
 }
 
-.form-group {
-    /* margin-bottom: 30px; */
-}
-
 .buttons-flex {
     margin-top: 1rem;
     display: flex;
@@ -102,6 +98,33 @@
     border: 2px solid #0b416d;
 }
 
+.selectedPermission-list {
+    list-style: none;
+    overflow-y: scroll;
+    border-radius: 5px;
+    height: 100%;
+    border: 2px solid #0b416d;
+}
+
+
+.persmisson-title{
+    font-family: Arial, Helvetica, sans-serif;
+    color:#333;
+    background-color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    font-size: .82rem;
+}
+
+.selected-permissons-title{
+    font-family: Arial, Helvetica, sans-serif;
+    color:#333;
+    background-color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    font-size: .82rem;
+}
+
 .permission-list li {
     cursor: pointer;
     padding: 5px;
@@ -109,9 +132,22 @@
 }
 
 .permission-list li:hover {
-    background: rgb(34, 140, 142);
+    background: #024e8db7;
     color: #fff;
 }
+
+.selectedPermission-list li {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+
+.selectedPermission-list li:hover {
+    background: #b10f1f;
+    color: #fff;
+}
+
 
 .clear-button {
     background-color: #015CA9;
