@@ -26,8 +26,6 @@ const UserDetails = ({ currentUser }) => {
         setSelectedPermissions(updatedSelectedPermissons)
     }
 
-    console.log(currentUser);
-
     return (
         <div className="users-page-user-details ">
 

@@ -26,9 +26,10 @@ const UsersPage = () => {
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/checks')
+                const response = await fetch('http://127.0.0.1:8000/users')
                 const data = await response.json()
-                console.log(data);
+                const updatedUsers = data.map(user => ({ ...user, isActive: false }));
+                setUsers(updatedUsers)
             } catch (e) {
                 console.log(e);
             }
@@ -37,21 +38,15 @@ const UsersPage = () => {
         getUsers()
     }, [])
 
-    const updatedUsers = useMemo(() => {
-        return users.map(user => ({ ...user, isActive: false }))
-    }, [])
 
-
-    //Nasil yaptigimi bende anlamadim aq
     useEffect(() => {
-        const _updatedUsers = updatedUsers.map(user => {
+        const _updatedUsers = users.map(user => {
             user.id === currentUser.id ? user.isActive = true : user.isActive = false
             return user
         });
         setUsers(_updatedUsers)
     }, [currentUser])
 
-    // console.log(updatedUsers);
 
     return (
         <main className="user-list-page">
@@ -60,7 +55,7 @@ const UsersPage = () => {
 
                 <UsersFilter />
 
-                <UsersTable setCurrentUser={setCurrentUser} users={updatedUsers} />
+                <UsersTable setCurrentUser={setCurrentUser} users={users} />
             </div>
         </main>
     );

@@ -71,10 +71,7 @@ const AddUserPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        users.push({ ...formData, roles: [formData.role] });
-        localStorage.setItem('users', JSON.stringify(users));
-        alert('User registered successfully!');
+
     };
 
     return (

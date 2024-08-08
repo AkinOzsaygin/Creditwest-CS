@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 
 const TableItem = ({ item, setCurrentItem }) => {
 
-
+    console.log(item);
     const style = {
         background: item.isActive ? 'rgb(230,230,230)' : 'white'
     }
@@ -11,6 +11,7 @@ const TableItem = ({ item, setCurrentItem }) => {
         const cellArr = [];
         for (const cellData in item) {
             if (cellData !== 'checkImage' && cellData !== 'isActive') {
+                console.log(cellData);
                 cellArr.push(<td>{item[cellData]}</td>)
             }
         }
