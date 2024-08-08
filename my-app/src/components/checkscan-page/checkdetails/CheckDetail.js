@@ -1,5 +1,9 @@
+
 import React from 'react';
 
+
+
+7(mesage)
 function CheckDetail({ label, text }) {
     return (
         <div className="check-detail-label-group">
@@ -10,4 +14,8 @@ function CheckDetail({ label, text }) {
     );
 }
 
+
 export default CheckDetail
+
+
+

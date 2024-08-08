@@ -154,8 +154,7 @@ label {
 }
 
 .user-page-selected-permission-arrrow,
-.user-page-selected-permission-arrrow-left
-{
+.user-page-selected-permission-arrrow-left {
     color: #015CA9;
 }
 
@@ -164,26 +163,6 @@ label {
     max-height: 180px;
     overflow-y: scroll;
     padding: 0rem .3rem .3rem .3rem;
-}
-
-<<<<<<< HEAD
-=======
-/* .user-list-user-permissions-column::-webkit-scrollbar {
-
-} */
-
-
-
-
-
->>>>>>> 8ac4681a7b839d63f9c05be0c44006958de3bb48
-/* Hide scrollbar for IE, Edge and Firefox */
-.user-list-permissions-list {
-    margin-top: .3rem;
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
 }
 
 .user-list-user-permissions-column h5 {

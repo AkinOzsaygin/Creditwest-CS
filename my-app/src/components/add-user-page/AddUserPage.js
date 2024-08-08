@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import '../../css/register-page.css';
 import { v4 as uuid } from 'uuid';
 import permissionsData from "../../data/permissions";
+
 import InputComponent from "../form-components/InputComponent";
 import SelectOptions from "../form-components/SelectOptions";
 
@@ -11,7 +12,7 @@ const AddUserPage = () => {
         lastName: '',
         username: '',
         role: '',
-        employeeID: '',
+        employeeid: '',
         branch: '',
         email: '',
         phoneNumber: '',
@@ -39,28 +40,6 @@ const AddUserPage = () => {
         setSelectedPermissions([]);
     };
 
-    const branchs = [
-        "Head Office",
-        "Sarayönü",
-        "Küçükkaymaklı",
-        "Gönyeli",
-        "Köşklüçiftlik",
-        "Mağusa",
-        "Girne",
-        "Alsancak",
-        "Çatalköy",
-        "Gemikonağı",
-        "Güzelyurt",
-        "Akdoğan",
-        "İskele"
-    ];
-
-    const roles = [
-        "Admin",
-        "Yönetici",
-        "Personel"
-    ]
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -77,10 +56,13 @@ const AddUserPage = () => {
     return (
         <main className="register-page">
             <div className="register-container">
-                <h3 className="register-title">PERSONEL EKLE</h3>
+                <h3 className="register-title">Kullanıcı Ekle</h3>
                 <form className="register-form" onSubmit={handleSubmit}>
                     <div className="row">
                         <div className="column">
+
+
+
 
                             <InputComponent
                                 label="İsim"
@@ -122,9 +104,12 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"****"}
                             />
+
                         </div>
 
                         <div className="column">
+
+
 
                             <InputComponent
                                 label="Soyisim"
@@ -161,12 +146,13 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"1234567890"}
                             />
+
                         </div>
 
                         <div className="column">
 
                             <div className="form-group-list">
-                                <label htmlFor="availablePermissions"><h2 className="persmisson-title">Mevcut İzinler</h2></label>
+                                <label htmlFor="availablePermissions">Mevcut İzinler</label>
                                 <ul className="permission-list">
                                     {permissions.length > 0
                                         ? permissions.map(per => (
@@ -178,13 +164,13 @@ const AddUserPage = () => {
                             </div>
 
                             <div className="form-group-list">
-                                <label htmlFor="selectedPermissions"><h2 className="selected-permissons-title">Seçilmiş İzinler</h2></label>
-                                <ul className="selectedPermission-list">
+                                <label htmlFor="selectedPermissions">Şecilmiş İzinler</label>
+                                <ul className="permission-list">
                                     {selectedPermissions.length > 0
                                         ? selectedPermissions.map(per => (
                                             <li key={uuid()} onClick={() => removePermission(per.id)}>{per.name}</li>
                                         ))
-                                        : "Seçili izin bulunmamakta"
+                                        : "No permission selected"
                                     }
                                 </ul>
                             </div>
@@ -193,7 +179,7 @@ const AddUserPage = () => {
                     </div>
                     <div className="buttons-flex">
                         <button type="submit" className="register-button">EKLE</button>
-                        <button type="button" className="clear-button" onClick={clearAllPermissions}>TEMİZLE</button>
+                        <button type="button" className="clear-button" onClick={clearAllPermissions}>TEMIZLE</button>
                     </div>
                 </form>
             </div>

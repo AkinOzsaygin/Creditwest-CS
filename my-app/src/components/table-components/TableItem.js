@@ -10,6 +10,7 @@ const TableItem = ({ item, setCurrentItem }) => {
     const cells = useMemo(() => {
         const cellArr = [];
         for (const cellData in item) {
+
             if (cellData !== 'checkImage' && cellData !== 'isActive') {
                 console.log(cellData);
                 cellArr.push(<td>{item[cellData]}</td>)
