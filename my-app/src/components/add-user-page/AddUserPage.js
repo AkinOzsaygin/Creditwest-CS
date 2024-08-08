@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import '../../css/register-page.css';
 import { v4 as uuid } from 'uuid';
 import permissionsData from "../../data/permissions";
-import AddUserPageComponent from "./AddUserPageComponent";
-import AddUserSelect from "./AddUserSelect";
+import InputComponent from "../form-components/InputComponent";
+import SelectOptions from "../form-components/SelectOptions";
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
@@ -85,7 +85,7 @@ const AddUserPage = () => {
                     <div className="row">
                         <div className="column">
 
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="İsim"
                                 type="text"
                                 id="firstName"
@@ -93,7 +93,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"Personel İsmi"}
                             />
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Kullanıcı Adı"
                                 type="text"
                                 id="username"
@@ -101,7 +101,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"Personel019"}
                             />
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Personel Numarası"
                                 type="text"
                                 id="employeeID"
@@ -109,7 +109,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"12345678"}
                             />
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Personel Emaili"
                                 type="email"
                                 id="email"
@@ -117,7 +117,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"example@gmail.com"}
                             />
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Şifre"
                                 type="password"
                                 id="password"
@@ -129,7 +129,7 @@ const AddUserPage = () => {
 
                         <div className="column">
 
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Soyisim"
                                 type="text"
                                 id="lastName"
@@ -137,18 +137,18 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"Personel Soyismi"}
                             />
-                            <AddUserSelect
+                            <SelectOptions
                                 label="Rol"
                                 options={roles}
                                 placeholder={"Lütfen rol seçiniz"}
                             />
-                            <AddUserSelect
+                            <SelectOptions
                                 label="Şube"
                                 options={branchs}
                                 placeholder={"Lütfen şube seçiniz"}
 
                             />
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Telefon Numarası"
                                 type="text"
                                 id="phoneNumber"
@@ -156,7 +156,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"+90(533)___ __ __"}
                             />
-                            <AddUserPageComponent
+                            <InputComponent
                                 label="Kimlik Numarası"
                                 type="text"
                                 id="id"

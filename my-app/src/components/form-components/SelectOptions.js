@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-function AddUserSelect({ label, placeholder, options }) {
+const SelectOptions = ({label, options, placeholder}) => {
     const selectOptions = options.map(option =><option value={option}>{option}</option>)
     
     return (
@@ -16,4 +16,4 @@ function AddUserSelect({ label, placeholder, options }) {
     );
 }
 
-export default AddUserSelect
+export default SelectOptions

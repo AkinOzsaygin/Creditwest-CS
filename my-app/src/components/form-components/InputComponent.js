@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react'
 
-function AddUserPageComponent({label, type, id, value, onChange, placeholder}){
-
-    return(
+function InputComponent({label, id, type, value, onChange, placeholder}) {
+    return (
         <div className="form-group">
-        <label htmlFor={id}>{label}</label>
-        <input
+            <label htmlFor={id}>{label}</label>
+            <input
             type={type}
             id={id}
             value={value}
@@ -13,8 +12,8 @@ function AddUserPageComponent({label, type, id, value, onChange, placeholder}){
             placeholder={placeholder}
             required
         />
-    </div>
+        </div>
     );
 }
 
-export default AddUserPageComponent
+export default InputComponent
