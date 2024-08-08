@@ -21,7 +21,21 @@ const UsersPage = () => {
         }
     );
 
-    const [users, setUsers] = useState(userData)
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/checks')
+                const data = await response.json()
+                console.log(data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        getUsers()
+    }, [])
 
     const updatedUsers = useMemo(() => {
         return users.map(user => ({ ...user, isActive: false }))

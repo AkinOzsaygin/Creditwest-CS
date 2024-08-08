@@ -166,6 +166,17 @@ label {
     padding: 0rem .3rem .3rem .3rem;
 }
 
+<<<<<<< HEAD
+=======
+/* .user-list-user-permissions-column::-webkit-scrollbar {
+
+} */
+
+
+
+
+
+>>>>>>> 8ac4681a7b839d63f9c05be0c44006958de3bb48
 /* Hide scrollbar for IE, Edge and Firefox */
 .user-list-permissions-list {
     margin-top: .3rem;
