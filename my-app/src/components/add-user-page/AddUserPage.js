@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../../css/register-page.css';
 import { v4 as uuid } from 'uuid';
 import permissionsData from "../../data/permissions";
-
 import InputComponent from "../form-components/InputComponent";
 import SelectOptions from "../form-components/SelectOptions";
+import { FaRegArrowAltCircleDown } from "react-icons/fa";
+import { FaRegArrowAltCircleUp } from "react-icons/fa";
+
+
+
+const branchs = [
+    "Head Office",
+    "Sarayonu",
+    "Kucukkaymakli",
+    "Gonyeli",
+    "Koskluciftlik",
+    "Magusa",
+    "Girne",
+    "Alsancak",
+    "Catalkoy",
+    "Gemikonagi",
+    "Guzelyurt",
+    "Akdogan",
+    "Iskele"
+]
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
@@ -20,8 +39,28 @@ const AddUserPage = () => {
         id: '',
     });
 
-    const [permissions, setPermissions] = useState(permissionsData);
+    const [permissions, setPermissions] = useState([]);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
+    const [groups, setGroups] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/')
+                const permissionData = await permisionResponse.json();
+
+                const groupResponse = await fetch('http://127.0.0.1:8000/groups/')
+                const groupData = await groupResponse.json()
+
+                setPermissions(permissionData)
+                setGroups(groupData)
+
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        getData()
+    }, [])
 
     const selectPermission = (perId) => {
         const selectedPermission = permissions.find(per => per.id === perId);
@@ -48,8 +87,37 @@ const AddUserPage = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const selectedPermisionIds = selectedPermissions.map(permission => permission.id)
+
+        const requestBody = {
+            email: formData.email,
+            username: formData.username,
+            password: formData.password,
+            name: formData.firstName,
+            surname: formData.lastName,
+            employee_id: 3,
+            branch: 1,
+            phone: formData.phoneNumber,
+            groups: [],
+            user_permissions: selectedPermisionIds
+        }
+
+        const options = {
+            method: "POST",
+            headers: new Headers({ 'content-type': 'application/json' }),
+        }
+
+        options.body = JSON.stringify(requestBody)
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/users/signup/', options);
+            const data = await response.json()
+            console.log(data);
+        } catch (e) {
+            console.log(e);
+        }
 
     };
 
@@ -79,7 +147,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Personel Numarası"
-                                type="text"
+                                type="number"
                                 id="employeeID"
                                 value={formData.employeeID}
                                 onChange={handleChange}
@@ -106,8 +174,6 @@ const AddUserPage = () => {
 
                         <div className="column">
 
-
-
                             <InputComponent
                                 label="Soyisim"
                                 type="text"
@@ -117,8 +183,8 @@ const AddUserPage = () => {
                                 placeholder={"Personel Soyismi"}
                             />
                             <SelectOptions
-                                label="Rol"
-                                options={roles}
+                                label="Group"
+                                options={groups}
                                 placeholder={"Lütfen rol seçiniz"}
                             />
                             <SelectOptions
@@ -129,7 +195,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Telefon Numarası"
-                                type="text"
+                                type="number"
                                 id="phoneNumber"
                                 value={formData.phoneNumber}
                                 onChange={handleChange}
@@ -137,7 +203,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Kimlik Numarası"
-                                type="text"
+                                type="number"
                                 id="id"
                                 value={formData.id}
                                 onChange={handleChange}
@@ -148,26 +214,30 @@ const AddUserPage = () => {
 
                         <div className="column">
 
-                            <div className="form-group-list">
-                                <label htmlFor="availablePermissions">Mevcut İzinler</label>
-                                <ul className="permission-list">
+                            <div className="form-group-add-permissions-list">
+                                <label htmlFor="availablePermissions"><h2 className="permissions-title">Mevcut İzinler</h2></label>
+                                <ul className="availablePermissions-list">
                                     {permissions.length > 0
                                         ? permissions.map(per => (
-                                            <li key={uuid()} onClick={() => selectPermission(per.id)}>{per.name}</li>
+                                            <li key={uuid()} onClick={() => selectPermission(per.id)}>{per.name}
+                                                <FaRegArrowAltCircleDown className="availablePermissions-down-arrow"></FaRegArrowAltCircleDown>
+                                            </li>
                                         ))
-                                        : <p>No permissions available</p>
+                                        : <p>Mevcut izin bulunmamakta</p>
                                     }
                                 </ul>
                             </div>
 
-                            <div className="form-group-list">
-                                <label htmlFor="selectedPermissions">Şecilmiş İzinler</label>
-                                <ul className="permission-list">
+                            <div className="form-group-add-permissions-list">
+                                <label htmlFor="selectedPermissions"><h2 className="selected-permissions-title">Şecilmiş İzinler</h2></label>
+                                <ul className="selectedPermissions-list">
                                     {selectedPermissions.length > 0
                                         ? selectedPermissions.map(per => (
-                                            <li key={uuid()} onClick={() => removePermission(per.id)}>{per.name}</li>
+                                            <li key={uuid()} onClick={() => removePermission(per.id)}>{per.name}
+                                                <FaRegArrowAltCircleUp className="selectedPermissions-up-arrow"></FaRegArrowAltCircleUp>
+                                            </li>
                                         ))
-                                        : "No permission selected"
+                                        : "Secili izin bulunmamakta"
                                     }
                                 </ul>
                             </div>
@@ -175,8 +245,8 @@ const AddUserPage = () => {
                         </div>
                     </div>
                     <div className="buttons-flex">
-                        <button type="submit" className="register-button">EKLE</button>
-                        <button type="button" className="clear-button" onClick={clearAllPermissions}>TEMIZLE</button>
+                        <button type="submit" className="register-button" onClick={handleSubmit}>EKLE</button>
+                        <button type="button" className="clear-button" onClick={() => { }}>TEMIZLE</button>
                     </div>
                 </form>
             </div>

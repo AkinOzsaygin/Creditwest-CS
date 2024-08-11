@@ -31,7 +31,7 @@ const UserDetails = ({ currentUser }) => {
 
             <UserInfos currentUser={currentUser} />
 
-            <UserDetailsPermissions permissions={permissions} selectPermission={selectPermission} />
+            <UserDetailsPermissions permissions={permissions} selectPermission={selectPermission}  />
 
             <UserDetailsSelectedPermissions selectedPermissions={selectedPermissions} removePermission={removePermission} />
 

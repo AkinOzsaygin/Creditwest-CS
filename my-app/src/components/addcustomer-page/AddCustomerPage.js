@@ -58,8 +58,8 @@ const AddCustomerPage = () => {
                 <h3 className="customer-register-title">MÜŞTERİ EKLE</h3>
                 <form className="customer-register-form" onSubmit={handleSubmit}>
                     <div className="row">
-                        <div className="column">
 
+                        <div className="column">
                             <InputComponent
                                 label="İsim"
                                 type="text"
@@ -85,14 +85,6 @@ const AddCustomerPage = () => {
                                 placeholder="+90(5)___ ___ __ __"
                             />
                             <InputComponent
-                                label="Soyisim"
-                                type="text"
-                                id="customerLastName"
-                                value={formData.customerLastName}
-                                onChange={handleChange}
-                                placeholder="Müştei Soyisim"
-                            />
-                            <InputComponent
                                 label="Müşteri Adresi"
                                 type="text"
                                 id="customerAddress"
@@ -109,6 +101,14 @@ const AddCustomerPage = () => {
 
 
                         <div className="column">
+                            <InputComponent
+                                label="Soyisim"
+                                type="text"
+                                id="customerLastName"
+                                value={formData.customerLastName}
+                                onChange={handleChange}
+                                placeholder="Müştei Soyisim"
+                            />
                             <InputComponent
                                 label="Müşteri Kimlik Numarası"
                                 type="text"
@@ -130,11 +130,12 @@ const AddCustomerPage = () => {
                                 options={branchs}
                                 placeholder="Lütfen şube seçiniz"
                             />
+                            <div className="buttons-flex">
+                                <button type="submit" className="customer-register-button">EKLE</button>
+                                <button type="button" className="customer-clear-button">TEMİZLE</button>
+                            </div>
+
                         </div>
-                    </div>
-                    <div className="buttons-flex">
-                        <button type="submit" className="customer-register-button">EKLE</button>
-                        <button type="button" className="customer-clear-button">TEMİZLE</button>
                     </div>
 
                 </form>

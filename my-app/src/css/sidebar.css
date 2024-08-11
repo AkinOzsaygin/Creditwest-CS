@@ -39,7 +39,7 @@
 }
 
 .nav-item-active {
-    background: rgb(156, 0, 0);
+    /* background: rgb(156, 0, 0); */
 }
 
 .nav-item:hover {

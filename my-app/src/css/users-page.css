@@ -224,12 +224,32 @@ h5 {
     top: 115%;
     left: 0%;
     /* transform: translateX(-50%); */
-    height: 300px;
-    width: 150px;
+    height: fit-content;
+    width: 130px;
+    height: 170px;
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
-    background: #EFEFEF;
+    background: white;
     border-radius: 5px;
     z-index: 999;
+    padding: .3rem .4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search-button-drop-down button {
+
+    border: none;
+    padding: .6rem 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.367);
+    border-radius: 3px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.search-button-drop-down button:hover {
+    background: #015CA9;
+    color: white;
 }
 
 .search-button:hover {

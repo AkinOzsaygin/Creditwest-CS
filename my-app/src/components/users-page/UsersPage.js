@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserDetails from "./user-details/UserDetails";
 import UsersTable from "./users-table/UsersTable";
 import UsersFilter from "./users-filter/UsersFilter";
@@ -21,7 +21,10 @@ const UsersPage = () => {
         }
     );
 
-    const [users, setUsers] = useState([])
+    const [search, setSearch] = useState('')
+    const [searchOption, setSearchOption] = useState('Kullanıcı Adı')
+
+    const [users, setUsers] = useState(userData)
 
     useEffect(() => {
         const getUsers = async () => {
@@ -35,7 +38,7 @@ const UsersPage = () => {
             }
         }
 
-        getUsers()
+        getUsers();
     }, [])
 
 
@@ -53,7 +56,7 @@ const UsersPage = () => {
             <div className="user-list-container">
                 <UserDetails currentUser={currentUser} />
 
-                <UsersFilter />
+                <UsersFilter search={search} setSearch={setSearch} searchOption={searchOption} setSearchOption={setSearchOption} />
 
                 <UsersTable setCurrentUser={setCurrentUser} users={users} />
             </div>

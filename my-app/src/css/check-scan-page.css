@@ -106,16 +106,29 @@
     height: 68%;
 }
 
+
 .check-detail-labels-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    gap: 0 10px;
     width: 100%;
     height: 100%;
+    margin-top: .2rem;
+}
+
+.check-detail-labels-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    width: 300px;
 }
 
 .check-detail-label-group {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .check-detail-label {
@@ -124,8 +137,50 @@
 }
 
 .check-detail-text {
-    font-size: .85rem;
+    font-size: .8rem;
     margin-left: .3rem;
+    border: none;
+    background: whitesmoke;
+    width: fit-content;
+    padding: .2rem 0;
+    text-indent: 2px;
+    cursor: pointer;
+
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.319)
+}
+
+.check-detail-text:hover {
+    outline: 1px solid #015CA9;
+}
+
+.check-detail-text:focus {
+    border: none;
+    outline: 1px solid #015CA9;
+}
+
+.confirm-button {
+    display: flex;
+    align-items: center;
+    padding: .3rem .5rem;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.319);
+    align-self: self-end;
+    border-radius: 3px;
+}
+
+.confirm-button:hover {
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+
+.confirm-button-icon {
+    color: green;
+    margin-left: .2rem;
+}
+
+.confirm-button:hover .confirm-button-icon {
+    color: white;
 }
 
 .check-image-container {
@@ -194,6 +249,7 @@
     grid-column: 1 / 3;
     height: 100%;
 }
+
 
 .scan-button:hover {
     opacity: .9;

@@ -51,7 +51,7 @@
     gap: 0 10px;
 }
 
-.form-group label {
+.form-group-register label {
     font-size: .82rem;
     font-weight: 600;
     color: #333;
@@ -62,16 +62,30 @@
     border-radius: 4px;
 }
 
-.form-group input,
-.form-group select {
+.form-group-select-options select {
     padding: 10px;
     font-size: 14px;
-    border: 2px solid #0b416d;
+    border: 1px solid #06355cea;
     border-radius: 5px;
     background-color: #fff;
     width: 100%;
 
 }
+
+.form-group-register input,
+.form-group-register select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #06355cea;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.form-group-register input:focus {
+    outline: 1px solid #06355cea;
+}
+
 
 .register-button {
     background-color: rgb(212, 24, 24);
@@ -90,64 +104,79 @@
     background-color: #b10f1f;
 }
 
-.permission-list {
+.availablePermissions-list {
     list-style: none;
     overflow-y: scroll;
     border-radius: 5px;
     height: 100%;
     border: 2px solid #0b416d;
+    font-size: 13.5px;
 }
 
-.selectedPermission-list {
+.selectedPermissions-list {
     list-style: none;
     overflow-y: scroll;
     border-radius: 5px;
     height: 100%;
     border: 2px solid #0b416d;
+    font-size: 13.5px;
 }
 
 
-.persmisson-title{
+.permissions-title {
     font-family: Arial, Helvetica, sans-serif;
-    color:#333;
+    color: #333;
     background-color: #ffffff;
     font-weight: 600;
     text-align: center;
     font-size: .82rem;
 }
 
-.selected-permissons-title{
+.selected-permissions-title {
     font-family: Arial, Helvetica, sans-serif;
-    color:#333;
+    color: #333;
     background-color: #ffffff;
     font-weight: 600;
     text-align: center;
     font-size: .82rem;
 }
 
-.permission-list li {
+.availablePermissions-list li {
     cursor: pointer;
     padding: 5px;
     border-radius: 4px;
 }
 
-.permission-list li:hover {
-    background: #024e8db7;
-    color: #fff;
+.availablePermissions-list li:hover {
+    background: whitesmoke;
+    color: green
 }
 
-.selectedPermission-list li {
+.availablePermissions-list li:hover .availablePermissions-down-arrow {
+    color: green;
+}
+
+
+.selectedPermissions-list li {
     cursor: pointer;
     padding: 5px;
     border-radius: 4px;
 }
 
 
-.selectedPermission-list li:hover {
-    background: #b10f1f;
-    color: #fff;
+.selectedPermissions-list li:hover {
+    color: rgb(212, 24, 24);
+    background-color: whitesmoke;
 }
 
+.selectedPermissions-list li:hover .selectedPermissions-up-arrow {
+    color: rgb(212, 24, 24);
+}
+
+.availablePermissions-down-arrow,
+.selectedPermissions-up-arrow {
+    color: #015CA9;
+}
 
 .clear-button {
     background-color: #015CA9;
@@ -170,9 +199,16 @@ select {
     height: 40px;
 }
 
-.form-group-list {
+.form-group-add-permissions-list {
     height: 50%;
     margin-top: .3rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-group-add-permissions-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

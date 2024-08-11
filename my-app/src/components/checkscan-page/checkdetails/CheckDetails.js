@@ -1,25 +1,44 @@
 import React from "react";
-import { RotatingSquare, MagnifyingGlass } from 'react-loader-spinner';
+import { MagnifyingGlass } from 'react-loader-spinner';
 import CheckDetail from "./CheckDetail";
+import { TbSquareCheckFilled } from "react-icons/tb";
+import { TbRosetteDiscountCheck } from "react-icons/tb";
 
-const CheckDetails = ({ checksequence, bankName, checkOwner, accountNumber, checkNumber, checkAmount, isLoading }) => {
+const CheckDetails = ({ checkSequence, bankName, checkOwner, accountNumber, checkNumber, checkAmount, isLoading, setCurrentCheck }) => {
 
     return (
         <div className="check-details-container">
-            <h3 className="container-sub-title">Çek Bilgileri</h3>
+            <div style={{ display: 'flex', alignItems: "center", justifyContent: "space-between", marginBottom: '.3rem' }}>
+                <h3 style={{ margin: '0' }} className="container-sub-title">Çek Bilgileri</h3>
+                <button className="confirm-button" >
+                    Onayla
+                    <TbRosetteDiscountCheck className="confirm-button-icon" size={17} />
+                </button>
+
+            </div>
 
             {!isLoading
                 ? <>
                     <div className="check-detail-labels-container">
+                        <div className="check-detail-labels-column">
 
-                        <CheckDetail label={"Çek Sırası:"} text={checksequence} />
-                        <CheckDetail label={"Banka:"} text={bankName} />
-                        <CheckDetail label={"Çek Sahibi:"} text={checkOwner} />
-                        <CheckDetail label={"Hesap Numarası:"} text={accountNumber} />
-                        <CheckDetail label={"Çek Numarası:"} text={checkNumber} />
-                        <CheckDetail label={"Çek Miktarı:"} text={checkAmount} />
-                        <CheckDetail label={'Çek Sırası:'} text={checksequence} />
-                        <CheckDetail label={'Banka:'} text={bankName} />
+                            {/* <CheckDetail label={"Çek Sırası:"} text={checkSequence} setCurrentCheck={setCurrentCheck} state={'checkSequnce'} /> */}
+                            <CheckDetail label={"Banka:"} text={bankName} setCurrentCheck={setCurrentCheck} state={'bankName'} />
+                            <CheckDetail label={"Çek Sahibi:"} text={checkOwner} setCurrentCheck={setCurrentCheck} state={'checkOwner'} />
+                            <CheckDetail label={"Hesap Numarası:"} text={accountNumber} setCurrentCheck={setCurrentCheck} state={'accountNumber'} />
+                            <CheckDetail label={"Çek Numarası:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'checkNumber'} />
+                            <CheckDetail label={"Çek Miktarı:"} text={checkAmount} setCurrentCheck={setCurrentCheck} state={'checkAmount'} />
+
+                        </div>
+
+                        <div className="check-detail-labels-column">
+                            <CheckDetail label={"Şube:"} text={checkSequence} setCurrentCheck={setCurrentCheck} state={'checkSequnce'} />
+                            <CheckDetail label={"Bölge:"} text={bankName} setCurrentCheck={setCurrentCheck} state={'bankName'} />
+                            <CheckDetail label={"Ödenecek Kişi:"} text={checkOwner} setCurrentCheck={setCurrentCheck} state={'checkOwner'} />
+                            <CheckDetail label={"Çek Tarihi:"} text={accountNumber} setCurrentCheck={setCurrentCheck} state={'accountNumber'} />
+                            <CheckDetail label={"Param Birimi:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'checkNumber'} />
+                            {/* <button className="confirm-button">Onayla</button> */}
+                        </div>
 
                     </div>
                 </>

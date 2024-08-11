@@ -37,19 +37,21 @@ const CheckScanPage = () => {
     //Ilk default cek icin data
     const [currentCheck, setCurrentCheck] = useState({
         checkSequnce: 0,
-        checkNumber: '-',
-        checkOwner: '-',
-        accountNumber: '-',
-        bankName: '-',
-        branchName: '-',
-        regionName: '-',
-        payeeName: '-',
-        checkDate: '-',
-        checkCurrency: '-',
-        checkAmount: '-',
+        checkNumber: '',
+        checkOwner: '',
+        accountNumber: '',
+        bankName: '',
+        branchName: '',
+        regionName: '',
+        payeeName: '',
+        checkDate: '',
+        checkCurrency: '',
+        checkAmount: '',
         checkImage: placeHolderImage,
         isActive: false,
     });
+
+    console.log(currentCheck);
 
     ///currentCheck her degistiginde currentIndex de degisecek
     useEffect(() => {
@@ -117,12 +119,13 @@ const CheckScanPage = () => {
                     {/* Cek Okunduktan sonra cek bilgilerinin bulundugu component */}
                     <CheckDetails
                         isLoading={isLoading}
-                        checksequence={currentCheck.checkSequnce}
+                        checkSequence={currentCheck.checkSequnce}
                         bankName={currentCheck.bankName}
                         checkOwner={currentCheck.checkOwner}
                         accountNumber={currentCheck.accountNumber}
                         checkNumber={currentCheck.checkNumber}
                         checkAmount={currentCheck.checkAmount}
+                        setCurrentCheck={setCurrentCheck}
                     />
 
                 </div>
