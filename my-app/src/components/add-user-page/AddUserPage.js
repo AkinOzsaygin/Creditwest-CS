@@ -45,6 +45,7 @@ const AddUserPage = () => {
 
     useEffect(() => {
         const getData = async () => {
+            //[coklu fetch kullanma] promise.all()
             try {
                 const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/')
                 const permissionData = await permisionResponse.json();
@@ -124,8 +125,8 @@ const AddUserPage = () => {
     return (
         <main className="register-page">
             <div className="register-container">
-                <h3 className="register-title">Kullanıcı Ekle</h3>
                 <form className="register-form" onSubmit={handleSubmit}>
+                    <h3 className="register-title">Kullanıcı Ekle</h3>
                     <div className="row">
                         <div className="column">
 

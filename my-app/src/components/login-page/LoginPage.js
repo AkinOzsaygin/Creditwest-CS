@@ -30,23 +30,36 @@ const LoginPage = () => {
         }
     }, [username, password]);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        if (username === 'Admin' && password.length >= 8 && !usernameError) {
-            setAuth({ user: username, roles: [5150] })
-            localStorage.setItem('auth', JSON.stringify({ user: username, roles: [5150] }));
+        try {
+
+            setAuth({ username: "Username", roles: [5150] })
             navigate("/layout");
-        } else if (username === 'Manager' && password.length >= 8 && !usernameError) {
-            setAuth({ user: username, roles: [1984] });
-            localStorage.setItem('auth', JSON.stringify({ user: username, roles: [1984] }));
-            navigate("/layout");
-        } else if (username === 'Personel' && password.length >= 8 && !usernameError) {
-            setAuth({ user: username, roles: [2001] });
-            localStorage.setItem('auth', JSON.stringify({ user: username, roles: [2001] }));
-            navigate("/layout");
-        } else (
-            alert("Geçersiz kullanıcı adı veya şifre")
-        )
+
+            const requestBody = {
+                username,
+                password
+            }
+
+            const options = {
+                method: "POST",
+                headers: new Headers({ 'content-type': 'application/json' }),
+                body: JSON.stringify(requestBody)
+            }
+
+            const response = await fetch("http://127.0.0.1:8000/users/login/", options)
+            if (response.status === 200) {
+
+            }
+            const data = await response.json()
+            console.log(data);
+
+
+
+        } catch (e) {
+
+        }
     };
 
     return (

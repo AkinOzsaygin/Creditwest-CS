@@ -32,7 +32,7 @@ const UsersPage = () => {
                 const response = await fetch('http://127.0.0.1:8000/users')
                 const data = await response.json()
                 const updatedUsers = data.map(user => ({ ...user, isActive: false }));
-                setUsers(updatedUsers)
+                setUsers([])
             } catch (e) {
                 console.log(e);
             }

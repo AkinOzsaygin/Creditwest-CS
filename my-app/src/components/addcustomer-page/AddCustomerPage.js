@@ -55,8 +55,9 @@ const AddCustomerPage = () => {
     return (
         <main className="customer-register-page">
             <div className="customer-register-container">
-                <h3 className="customer-register-title">MÜŞTERİ EKLE</h3>
                 <form className="customer-register-form" onSubmit={handleSubmit}>
+                    <h3 className="customer-register-title">MÜŞTERİ EKLE</h3>
+
                     <div className="row">
 
                         <div className="column">
