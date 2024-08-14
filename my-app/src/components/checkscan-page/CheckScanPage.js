@@ -149,7 +149,7 @@ const CheckScanPage = () => {
                 />
 
 
-                {/* Overlay copmonent  a                   rka tarafi gölgelendirecek 
+                {/* Overlay copmonent  arka tarafi gölgelendirecek 
                 CheckView copmonent  ceki daha buyuk boyutta ekranin ortasinda gosterecek */}
                 {
                     isCheckView &&

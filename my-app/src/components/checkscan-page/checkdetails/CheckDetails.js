@@ -36,7 +36,7 @@ const CheckDetails = ({ checkSequence, bankName, checkOwner, accountNumber, chec
                             <CheckDetail label={"Bölge:"} text={bankName} setCurrentCheck={setCurrentCheck} state={'bankName'} />
                             <CheckDetail label={"Ödenecek Kişi:"} text={checkOwner} setCurrentCheck={setCurrentCheck} state={'checkOwner'} />
                             <CheckDetail label={"Çek Tarihi:"} text={accountNumber} setCurrentCheck={setCurrentCheck} state={'accountNumber'} />
-                            <CheckDetail label={"Param Birimi:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'checkNumber'} />
+                            <CheckDetail label={"Para Birimi:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'checkNumber'} />
                             {/* <button className="confirm-button">Onayla</button> */}
                         </div>
 

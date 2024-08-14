@@ -68,7 +68,7 @@ const LoginPage = () => {
                 <div className="login-image-container">
                     <img className="login-image" src={logoImage} alt="CreditWest Software Genius Check Scanner"></img>
                     <p className="check-scanner-text">CHECK SCANNER</p>
-                    <p className="logo-text">CREDİT<span>W</span>EST SOFTWARE GENIUS</p>
+                    <p className="logo-text">CREDIT<span>W</span>EST SOFTWARE GENIUS</p>
 
                 </div>
                 <form className="login-form" onSubmit={handleSubmit}>
