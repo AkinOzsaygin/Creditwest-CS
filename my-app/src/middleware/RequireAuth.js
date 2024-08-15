@@ -7,6 +7,7 @@ const RequireAuth = ({ allowedRoles }) => {
     const { auth } = useAuth();
 
     const roles = auth.roles || [];
+    console.log(auth);
 
     return (
         roles?.find(role => allowedRoles.includes(role))
