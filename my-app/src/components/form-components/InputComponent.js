@@ -8,7 +8,7 @@ function InputComponent({ label, id, type, value, onChange, placeholder }) {
         if (type === 'tel') {
             processedValue = inputValue.replace(/[^0-9]/g, ""); // Sadece rakamları kabul eder
         } else if (type === 'text') {
-            processedValue = inputValue.replace(/[^a-zA-Z]/g, ""); // Sadece harfleri kabul eder
+            processedValue = inputValue.replace(/[^a-zA-ZçğıöşüÇĞİÖŞÜ\s]/g, ''); // Sadece harfleri kabul eder
         } else {
             processedValue = inputValue; // Diğer türler için hiçbir işlem yapmaz
         }
