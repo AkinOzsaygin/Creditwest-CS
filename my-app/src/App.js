@@ -22,9 +22,9 @@ import ForbidenPage from "./components/error-page/ForbidenPage";
 import AddCustomerPage from "./components/addcustomer-page/AddCustomerPage";
 
 const ROLES = {
-  user: 2001,
-  manager: 1984,
-  admin: 5150
+  user: 1,
+  manager: 2,
+  admin: 3
 }
 
 function App() {

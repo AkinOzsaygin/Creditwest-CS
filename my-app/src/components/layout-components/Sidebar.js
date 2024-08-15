@@ -9,10 +9,11 @@ import { FaRegAddressCard } from "react-icons/fa6";
 import useAuth from '../../hooks.js/useAuth';
 
 const ROLES = {
-  user: 2001,
-  manager: 1984,
-  admin: 5150
+  user: 1,
+  manager: 2,
+  admin: 3
 }
+
 
 const Sidebar = () => {
 

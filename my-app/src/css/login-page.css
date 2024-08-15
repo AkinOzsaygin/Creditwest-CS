@@ -129,6 +129,10 @@
     opacity: .8;
 }
 
+.login-form .error-text {
+    color: red;
+    margin-top: 1rem;
+}
 
 @media (max-width: 1500px) {
     .logo-text {

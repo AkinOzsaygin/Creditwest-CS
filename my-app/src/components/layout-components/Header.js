@@ -6,11 +6,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = ({ title }) => {
 
-  console.log("Header Created");
 
   const { auth } = useAuth();
   const logout = useLogout();
   const navigate = useNavigate();
+
+
   const handleLogout = () => {
     logout();
     navigate('/');
@@ -23,9 +24,9 @@ const Header = ({ title }) => {
       </div>
 
       {
-        auth.user &&
+        auth.firstName &&
         <div className='header-flex-group'>
-          <span className='username-text'>{auth.user} | <span onClick={handleLogout}>Çıkış Yap</span></span>
+          <span className='username-text'>{auth.firstName} {auth.lastName} | <span onClick={handleLogout}>Çıkış Yap</span></span>
         </div>
       }
 
