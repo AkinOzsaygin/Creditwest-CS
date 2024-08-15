@@ -10,6 +10,7 @@ const LoginPage = () => {
     const [usernameError, setUsernameError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const { setAuth } = useAuth();
 
@@ -34,9 +35,6 @@ const LoginPage = () => {
         event.preventDefault();
         try {
 
-            setAuth({ username: "Username", roles: [5150] })
-            navigate("/layout");
-
             const requestBody = {
                 username,
                 password
@@ -48,17 +46,19 @@ const LoginPage = () => {
                 body: JSON.stringify(requestBody)
             }
 
-            const response = await fetch("http://127.0.0.1:8000/users/login/", options)
+            const response = await fetch("http://127.0.0.1:8000/users/login/", options);
+
+            if (response.status === 401) setErrorMessage("Kullancı Adı Veya Şifre Yanlış Girildi !");
+
             if (response.status === 200) {
-
+                const data = await response.json()
+                console.log(data);
+                setAuth({ firstName: data.firstName, lastName: data.lastName, roles: data.groups })
+                navigate("/layout");
             }
-            const data = await response.json()
-            console.log(data);
-
-
 
         } catch (e) {
-
+            setErrorMessage("Beklenmedik Bir Sorun Oluştu !")
         }
     };
 
@@ -83,6 +83,7 @@ const LoginPage = () => {
                         {passwordError && <p className="error-message">{passwordError}</p>}
                     </div>
                     <button type="submit" className="login-button">OTURUM AÇ</button>
+                    {errorMessage && <p className="error-text">{errorMessage}</p>}
                 </form>
             </div>
         </div>
