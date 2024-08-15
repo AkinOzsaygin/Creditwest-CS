@@ -58,7 +58,7 @@ const AddCustomerPage = () => {
                             />
                             <InputComponent
                                 label="Müşteri Hesap Numarası"
-                                type="text"
+                                type="tel"
                                 id="customerAccountNumber"
                                 value={formData.customerAccountNumber}
                                 onChange={handleChange}
@@ -74,7 +74,7 @@ const AddCustomerPage = () => {
                             />
                             <InputComponent
                                 label="Müşteri Adresi"
-                                type="text"
+                                type="address"
                                 id="customerAddress"
                                 value={formData.customerAddress}
                                 onChange={handleChange}
@@ -99,7 +99,7 @@ const AddCustomerPage = () => {
                             />
                             <InputComponent
                                 label="Müşteri Kimlik Numarası"
-                                type="text"
+                                type="tel"
                                 id="customerIDCardNo"
                                 value={formData.customerIDCardNo}
                                 onChange={handleChange}

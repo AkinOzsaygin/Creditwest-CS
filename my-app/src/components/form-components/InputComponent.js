@@ -3,8 +3,17 @@ import React from 'react';
 function InputComponent({ label, id, type, value, onChange, placeholder }) {
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
-        const numericValue = type === 'tel' ? inputValue.replace(/[^0-9]/g, "") : inputValue; // Sadece rakamları kabul eder
-        onChange({ target: { id, value: numericValue, name: id } });
+        let processedValue;
+
+        if (type === 'tel') {
+            processedValue = inputValue.replace(/[^0-9]/g, ""); // Sadece rakamları kabul eder
+        } else if (type === 'text') {
+            processedValue = inputValue.replace(/[^a-zA-Z]/g, ""); // Sadece harfleri kabul eder
+        } else {
+            processedValue = inputValue; // Diğer türler için hiçbir işlem yapmaz
+        }
+
+        onChange({ target: { id, value: processedValue, name: id } });
     };
 
     return (

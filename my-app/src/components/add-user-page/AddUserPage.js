@@ -126,7 +126,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Kullanıcı Adı"
-                                type="text"
+                                type="user"
                                 id="username"
                                 value={formData.username}
                                 onChange={handleChange}
@@ -134,7 +134,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Personel Numarası"
-                                type="number"
+                                type="tel"
                                 id="employeeID"
                                 value={formData.employeeID}
                                 onChange={handleChange}
@@ -182,7 +182,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Telefon Numarası"
-                                type="number"
+                                type="tel"
                                 id="phoneNumber"
                                 value={formData.phoneNumber}
                                 onChange={handleChange}
@@ -190,7 +190,7 @@ const AddUserPage = () => {
                             />
                             <InputComponent
                                 label="Kimlik Numarası"
-                                type="number"
+                                type="tel"
                                 id="id"
                                 value={formData.id}
                                 onChange={handleChange}
@@ -224,7 +224,7 @@ const AddUserPage = () => {
                                                 <FaRegArrowAltCircleUp className="selectedPermissions-up-arrow"></FaRegArrowAltCircleUp>
                                             </li>
                                         ))
-                                        : "Secili izin bulunmamakta"
+                                        : "Seçili izin bulunmamakta"
                                     }
                                 </ul>
                             </div>

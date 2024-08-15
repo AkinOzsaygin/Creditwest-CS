@@ -108,7 +108,7 @@
     list-style: none;
     overflow-y: scroll;
     border-radius: 5px;
-    height: 100%;
+    height: 185px;
     border: 2px solid #0b416d;
     font-size: 13.5px;
 }
@@ -117,11 +117,10 @@
     list-style: none;
     overflow-y: scroll;
     border-radius: 5px;
-    height: 100%;
+    height: 185px;
     border: 2px solid #0b416d;
     font-size: 13.5px;
 }
-
 
 .permissions-title {
     font-family: Arial, Helvetica, sans-serif;
