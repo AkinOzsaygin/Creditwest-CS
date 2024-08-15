@@ -9,21 +9,7 @@ import { FaRegArrowAltCircleUp } from "react-icons/fa";
 
 
 
-const branchs = [
-    "Head Office",
-    "Sarayonu",
-    "Kucukkaymakli",
-    "Gonyeli",
-    "Koskluciftlik",
-    "Magusa",
-    "Girne",
-    "Alsancak",
-    "Catalkoy",
-    "Gemikonagi",
-    "Guzelyurt",
-    "Akdogan",
-    "Iskele"
-]
+const branchs = []
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({

@@ -2,10 +2,11 @@ import React from "react";
 
 
 const DataManagementPage = () => {
+
     return (
-        <main className="data-management-page">
-            Data Management 
-        </main>
+        <div>
+            <h3>DATA</h3>
+        </div>
     );
 }
 

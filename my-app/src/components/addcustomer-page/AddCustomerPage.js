@@ -17,23 +17,9 @@ const AddCustomerPage = () => {
         customerBankBranch: '',
     });
 
-    const customerType = ["Bireysel", "Ticari"];
+    const customerType = [];
 
-    const branchs = [
-        "Head Office",
-        "Sarayönü",
-        "Küçükkaymaklı",
-        "Gönyeli",
-        "Köşklüçiftlik",
-        "Mağusa",
-        "Girne",
-        "Alsancak",
-        "Çatalköy",
-        "Gemikonağı",
-        "Güzelyurt",
-        "Akdoğan",
-        "İskele"
-    ];
+    const branchs = [];
 
 
     const handleChange = (e) => {
@@ -43,6 +29,7 @@ const AddCustomerPage = () => {
             [name]: value
         });
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -67,7 +54,7 @@ const AddCustomerPage = () => {
                                 id="customerFirstName"
                                 value={formData.customerFirstName}
                                 onChange={handleChange}
-                                placeholder="Müşteri İsim"
+                                placeholder="Müşteri Adı"
                             />
                             <InputComponent
                                 label="Müşteri Hesap Numarası"
@@ -79,7 +66,7 @@ const AddCustomerPage = () => {
                             />
                             <InputComponent
                                 label="Müşteri Telefon Numarası"
-                                type="text"
+                                type="tel"
                                 id="customerPhoneNumber"
                                 value={formData.customerPhoneNumber}
                                 onChange={handleChange}
@@ -108,7 +95,7 @@ const AddCustomerPage = () => {
                                 id="customerLastName"
                                 value={formData.customerLastName}
                                 onChange={handleChange}
-                                placeholder="Müştei Soyisim"
+                                placeholder="Müştei Soyadı"
                             />
                             <InputComponent
                                 label="Müşteri Kimlik Numarası"
