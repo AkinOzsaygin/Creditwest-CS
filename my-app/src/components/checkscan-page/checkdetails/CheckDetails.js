@@ -4,7 +4,23 @@ import CheckDetail from "./CheckDetail";
 import { TbSquareCheckFilled } from "react-icons/tb";
 import { TbRosetteDiscountCheck } from "react-icons/tb";
 
-const CheckDetails = ({ checkSequence, bankName, checkOwner, accountNumber, checkNumber, checkAmount, isLoading, setCurrentCheck }) => {
+const CheckDetails = (
+    { 
+    checkSequence, 
+    bankName, 
+    checkOwner, 
+    accountNumber, 
+    checkNumber, 
+    checkAmount, 
+    isLoading, 
+    setCurrentCheck, 
+    branchName, 
+    checkCurrency, 
+    checkDate, 
+    payeeName, 
+    regionName 
+    }
+) => {
 
     return (
         <div className="check-details-container">
@@ -32,11 +48,11 @@ const CheckDetails = ({ checkSequence, bankName, checkOwner, accountNumber, chec
                         </div>
 
                         <div className="check-detail-labels-column">
-                            <CheckDetail label={"Şube:"} text={checkSequence} setCurrentCheck={setCurrentCheck} state={'checkSequnce'} />
-                            <CheckDetail label={"Bölge:"} text={bankName} setCurrentCheck={setCurrentCheck} state={'bankName'} />
-                            <CheckDetail label={"Ödenecek Kişi:"} text={checkOwner} setCurrentCheck={setCurrentCheck} state={'checkOwner'} />
-                            <CheckDetail label={"Çek Tarihi:"} text={accountNumber} setCurrentCheck={setCurrentCheck} state={'accountNumber'} />
-                            <CheckDetail label={"Para Birimi:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'checkNumber'} />
+                            <CheckDetail label={"Şube:"} text={branchName} setCurrentCheck={setCurrentCheck} state={'branchName'} />
+                            <CheckDetail label={"Bölge:"} text={regionName} setCurrentCheck={setCurrentCheck} state={'regionName'} />
+                            <CheckDetail label={"Ödenecek Kişi:"} text={payeeName} setCurrentCheck={setCurrentCheck} state={'payeeName'} />
+                            <CheckDetail label={"Çek Tarihi:"} text={checkDate} setCurrentCheck={setCurrentCheck} state={'checkDate'} />
+                            <CheckDetail label={"Para Birimi:"} text={checkCurrency} setCurrentCheck={setCurrentCheck} state={'checkCurrency'} />
                             {/* <button className="confirm-button">Onayla</button> */}
                         </div>
 

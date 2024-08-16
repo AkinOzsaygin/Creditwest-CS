@@ -126,6 +126,11 @@ const CheckScanPage = () => {
                         checkNumber={currentCheck.checkNumber}
                         checkAmount={currentCheck.checkAmount}
                         setCurrentCheck={setCurrentCheck}
+                        checkDate={currentCheck.checkDate}
+                        payeeName={currentCheck.payeeName}
+                        branchName={currentCheck.branchName}
+                        regionName={currentCheck.regionName}
+                        checkCurrency={currentCheck.checkCurrency}
                     />
 
                 </div>
