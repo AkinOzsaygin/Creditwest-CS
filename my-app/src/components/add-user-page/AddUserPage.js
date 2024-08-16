@@ -87,7 +87,7 @@ const AddUserPage = () => {
             employee_id: 3,
             branch: 1,
             phone: formData.phoneNumber,
-            groups: [],
+            groups: [1,2],
             user_permissions: selectedPermisionIds
         }
 
@@ -233,7 +233,7 @@ const AddUserPage = () => {
                     </div>
                     <div className="buttons-flex">
                         <button type="submit" className="register-button" onClick={handleSubmit}>EKLE</button>
-                        <button type="button" className="clear-button" onClick={() => { }}>TEMIZLE</button>
+                        <button type="button" className="clear-button" onClick={(clearAllPermissions) => { }}>TEMIZLE</button>
                     </div>
                 </form>
             </div>
