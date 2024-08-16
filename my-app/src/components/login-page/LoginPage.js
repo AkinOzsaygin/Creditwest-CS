@@ -7,29 +7,11 @@ import useAuth from "../../hooks.js/useAuth"
 const LoginPage = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
-    const [usernameError, setUsernameError] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
     const { setAuth } = useAuth();
 
-    useEffect(() => {
-        // Password validation
-        if (password && password.length < 8) {
-            setPasswordError('Şifreniz en az 8 karakter olmalıdır.');
-        } else {
-            setPasswordError('');
-        }
-
-        // Username validation
-        const usernameRegex = /^[a-zA-Z0-9]+$/; // Only alphanumeric characters
-        if (username && !usernameRegex.test(username)) {
-            setUsernameError('Kullanıcı adı sadece harf ve rakamlardan oluşmalıdır.');
-        } else {
-            setUsernameError('');
-        }
-    }, [username, password]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -51,9 +33,15 @@ const LoginPage = () => {
             if (response.status === 401) setErrorMessage("Kullancı Adı Veya Şifre Yanlış Girildi !");
 
             if (response.status === 200) {
+
                 const data = await response.json()
+                const userAuth = { firstName: data.firstName, lastName: data.lastName, roles: data.groups }
+
                 console.log(data);
-                setAuth({ firstName: data.firstName, lastName: data.lastName, roles: data.groups })
+                //set Auth Auth-Context and Local Storage
+                setAuth(userAuth)
+                localStorage.setItem('auth', JSON.stringify(userAuth))
+
                 navigate("/layout");
             }
 
@@ -77,10 +65,8 @@ const LoginPage = () => {
                     <div className="user-info">
                         <label htmlFor="username">Kullanıcı adı</label>
                         <input type="text" id="username" name="username" placeholder="Kullanıcı adı" maxLength="20" value={username} onChange={(e) => setUsername(e.target.value)} required />
-                        {usernameError && <p className="error-message">{usernameError}</p>}
                         <label htmlFor="password">Şifre</label>
                         <input type="password" id="password" name="password" placeholder="Şifre" required value={password} onChange={(e) => setPassword(e.target.value)} />
-                        {passwordError && <p className="error-message">{passwordError}</p>}
                     </div>
                     <button type="submit" className="login-button">OTURUM AÇ</button>
                     {errorMessage && <p className="error-text">{errorMessage}</p>}

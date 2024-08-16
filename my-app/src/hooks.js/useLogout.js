@@ -8,7 +8,7 @@ const useLogout = () => {
     const logout = () => {
 
         setAuth({});
-        
+
         localStorage.clear('auth');
     }
 
