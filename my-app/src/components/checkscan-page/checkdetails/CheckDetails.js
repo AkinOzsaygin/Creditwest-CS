@@ -5,20 +5,20 @@ import { TbSquareCheckFilled } from "react-icons/tb";
 import { TbRosetteDiscountCheck } from "react-icons/tb";
 
 const CheckDetails = (
-    { 
-    checkSequence, 
-    bankName, 
-    checkOwner, 
-    accountNumber, 
-    checkNumber, 
-    checkAmount, 
-    isLoading, 
-    setCurrentCheck, 
-    branchName, 
-    checkCurrency, 
-    checkDate, 
-    payeeName, 
-    regionName 
+    {
+        checkSequence,
+        bankName,
+        checkOwner,
+        accountNumber,
+        checkNumber,
+        checkAmount,
+        isLoading,
+        setCurrentCheck,
+        branchName,
+        checkCurrency,
+        checkDate,
+        payeeName,
+        regionName
     }
 ) => {
 
