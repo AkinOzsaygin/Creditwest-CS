@@ -51,8 +51,6 @@ const CheckScanPage = () => {
         isActive: false,
     });
 
-    console.log(currentCheck);
-
     ///currentCheck her degistiginde currentIndex de degisecek
     useEffect(() => {
         let currentindex;
