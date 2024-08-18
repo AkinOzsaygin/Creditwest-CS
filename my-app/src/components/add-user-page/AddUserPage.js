@@ -6,28 +6,32 @@ import InputComponent from "../form-components/InputComponent";
 import SelectOptions from "../form-components/SelectOptions";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
-
+import Popup from "../form-components/Popup";
 
 
 const branchs = []
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        username: '',
-        role: '',
-        employeeid: '',
-        branch: '',
-        email: '',
-        phoneNumber: '',
-        password: '',
-        id: '',
+        firstName: 'user_first_name',
+        lastName: 'user_first_name',
+        username: 'username11',
+        employeeid: '12345678101',
+        branch: '1',
+        email: 'app1@mail.com',
+        phoneNumber: '100000',
+        password: '12345678',
+        groups: [1],
+        user_permissions: []
     });
 
     const [permissions, setPermissions] = useState([]);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
-    const [groups, setGroups] = useState([])
+    const [groups, setGroups] = useState([]);
+
+    const [showPopup, setShowPopup] = useState(false);
+
+    const [popUpMessage, setPopupMessage] = useState("");
 
     useEffect(() => {
         const getData = async () => {
@@ -41,13 +45,17 @@ const AddUserPage = () => {
 
                 setPermissions(permissionData)
                 setGroups(groupData)
-
             } catch (e) {
                 console.log(e);
             }
         }
         getData()
     }, [])
+
+    useEffect(() => {
+        const selectedPermisionIds = selectedPermissions.map(permission => permission.id)
+        setFormData({ ...formData, user_permissions: selectedPermisionIds })
+    }, [selectedPermissions])
 
     const selectPermission = (perId) => {
         const selectedPermission = permissions.find(per => per.id === perId);
@@ -68,54 +76,62 @@ const AddUserPage = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
         setFormData({
             ...formData,
-            [name]: value
+            [name]: name === 'groups' ? [parseInt(value)] : value
         });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const selectedPermisionIds = selectedPermissions.map(permission => permission.id)
 
         const requestBody = {
             email: formData.email,
             username: formData.username,
             password: formData.password,
-            name: formData.firstName,
-            surname: formData.lastName,
-            employee_id: 3,
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            employee_id: formData.employeeid,
             branch: 1,
             phone: formData.phoneNumber,
-            groups: [1,2],
-            user_permissions: selectedPermisionIds
+            groups: formData.groups,
+            user_permissions: formData.user_permissions
         }
 
         const options = {
             method: "POST",
             headers: new Headers({ 'content-type': 'application/json' }),
+            body: JSON.stringify(requestBody)
         }
-
-        options.body = JSON.stringify(requestBody)
 
         try {
             const response = await fetch('http://127.0.0.1:8000/users/signup/', options);
             const data = await response.json()
-            console.log(data);
+            const errorsArr = [];
+            if (response.ok) {
+                setPopupMessage(`${formData.username} kullanıcılara eklendi !`);
+                setShowPopup(true);
+            } else {
+                for (const errors in data) {
+                    data[errors].forEach(item => errorsArr.push(item));
+                }
+                setShowPopup(true)
+                setPopupMessage(errorsArr.join('-'))
+            }
         } catch (e) {
             console.log(e);
         }
-
     };
+
 
     return (
         <main className="register-page">
             <div className="register-container">
                 <form className="register-form" onSubmit={handleSubmit}>
                     <h3 className="register-title">Kullanıcı Ekle</h3>
-                    <div className="row">
-                        <div className="column">
-
+                    <div className="register-row">
+                        <div className="register-column">
                             <InputComponent
                                 label="İsim"
                                 type="text"
@@ -132,14 +148,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"Personel019"}
                             />
-                            <InputComponent
-                                label="Personel Numarası"
-                                type="tel"
-                                id="employeeID"
-                                value={formData.employeeID}
-                                onChange={handleChange}
-                                placeholder={"12345678"}
-                            />
+
                             <InputComponent
                                 label="Personel Emaili"
                                 type="email"
@@ -157,9 +166,18 @@ const AddUserPage = () => {
                                 placeholder={"****"}
                             />
 
+                            <InputComponent
+                                label="Kimlik Numarası"
+                                type="tel"
+                                id="employeeid"
+                                value={formData.employeeid}
+                                onChange={handleChange}
+                                placeholder={"1234567890"}
+                            />
+
                         </div>
 
-                        <div className="column">
+                        <div className="register-column">
 
                             <InputComponent
                                 label="Soyisim"
@@ -170,6 +188,8 @@ const AddUserPage = () => {
                                 placeholder={"Personel Soyismi"}
                             />
                             <SelectOptions
+                                name={'groups'}
+                                onChange={handleChange}
                                 label="Group"
                                 options={groups}
                                 placeholder={"Lütfen rol seçiniz"}
@@ -188,22 +208,18 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"+90(533)___ __ __"}
                             />
-                            <InputComponent
-                                label="Kimlik Numarası"
-                                type="tel"
-                                id="id"
-                                value={formData.id}
-                                onChange={handleChange}
-                                placeholder={"1234567890"}
-                            />
+
+
+
+                            <button type="submit" className="register-button">EKLE</button>
 
                         </div>
 
-                        <div className="column">
+                        <div className="register-column">
 
-                            <div className="form-group-add-permissions-list">
-                                <label htmlFor="availablePermissions"><h2 className="permissions-title">Mevcut İzinler</h2></label>
-                                <ul className="availablePermissions-list">
+                            <div className="register-permissions-list-container">
+                                <label>Mevcut İzinler</label>
+                                <ul className="available-permissions-list">
                                     {permissions.length > 0
                                         ? permissions.map(per => (
                                             <li key={uuid()} onClick={() => selectPermission(per.id)}>{per.name}
@@ -215,9 +231,9 @@ const AddUserPage = () => {
                                 </ul>
                             </div>
 
-                            <div className="form-group-add-permissions-list">
-                                <label htmlFor="selectedPermissions"><h2 className="selected-permissions-title">Şecilmiş İzinler</h2></label>
-                                <ul className="selectedPermissions-list">
+                            <div className="register-permissions-list-container">
+                                <label className="">Şecilmiş İzinler</label>
+                                <ul className="selected-permissions-list">
                                     {selectedPermissions.length > 0
                                         ? selectedPermissions.map(per => (
                                             <li key={uuid()} onClick={() => removePermission(per.id)}>{per.name}
@@ -228,15 +244,20 @@ const AddUserPage = () => {
                                     }
                                 </ul>
                             </div>
-
+                            <button type="button" className="clear-button" onClick={clearAllPermissions}>TEMIZLE</button>
                         </div>
+
                     </div>
-                    <div className="buttons-flex">
-                        <button type="submit" className="register-button" onClick={handleSubmit}>EKLE</button>
-                        <button type="button" className="clear-button" onClick={(clearAllPermissions) => { }}>TEMIZLE</button>
-                    </div>
+
                 </form>
             </div>
+            <Popup
+                show={showPopup}
+                message={popUpMessage}
+                borderColor={'#015CA9'}
+                setShowPopup={setShowPopup}
+                isYesOrNo={false}
+            />
         </main>
     );
 };

@@ -20,12 +20,8 @@ import NotFoundedPage from "./components/error-page/NotFoundPage";
 import RequireAuth from "./middleware/RequireAuth";
 import ForbidenPage from "./components/error-page/ForbidenPage";
 import AddCustomerPage from "./components/addcustomer-page/AddCustomerPage";
+import ROLES from "./data/roles";
 
-const ROLES = {
-  user: 1,
-  manager: 2,
-  admin: 3
-}
 
 function App() {
 

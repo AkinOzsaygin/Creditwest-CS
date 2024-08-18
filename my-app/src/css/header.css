@@ -24,9 +24,9 @@
 }
 
 .username-text {
-    color: #015CA9;
-    font-weight: 600;
-    font-size: .8rem;
+    color: #083a66;
+    font-weight: 550;
+    font-size: .75rem;
     cursor: pointer;
     text-transform: capitalize;
 }

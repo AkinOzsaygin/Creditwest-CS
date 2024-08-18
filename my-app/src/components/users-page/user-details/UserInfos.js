@@ -1,86 +1,49 @@
 import React from 'react'
+import UserDetail from './UserDetail';
 
-const UserInfos = ({ currentUser }) => {
+const UserInfos = ({ currentUser, setCurrentUser }) => {
+    const groups = currentUser.groups.map(group => group.name).join(' ');
+
+
     return (
         <div className='user-list-details-column-wrapper'>
 
             <h5 className=''>Kullanıcı bilgileri</h5>
 
             <div className='flex'>
+
                 <div className='user-list-user-details-column'>
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            id:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.id}</p>
-                    </div>
+                    <UserDetail isReadOnly={true} label={"id"} value={currentUser.id} setCurrentUser={setCurrentUser} state={'id'} />
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Kullanıcı Adı:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.username}</p>
-                    </div>
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Sifre:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.password}</p>
-                    </div>
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Email:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.email}</p>
-                    </div>
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Kimlik Numarası:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.userId}</p>
-                    </div>
+                    <UserDetail label={"Kullanıcı Adı"} value={currentUser.username} setCurrentUser={setCurrentUser} state={'username'} />
+
+
+                    <UserDetail label={"Sifre"} value={currentUser.newPassword} setCurrentUser={setCurrentUser} state={'newPassword'} type={'password'} />
+
+                    <UserDetail label={"Email"} value={currentUser.email} setCurrentUser={setCurrentUser} state={'email'} />
+
+
+                    <UserDetail label={"Kimlik Numarası"} value={currentUser.employee_id} setCurrentUser={setCurrentUser} state={"employee_id"} />
 
                 </div>
 
                 <div className='user-list-user-details-column'>
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Ad:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.name}</p>
-                    </div>
+                    <UserDetail label={"Ad"} value={currentUser.first_name} setCurrentUser={setCurrentUser} state={"first_name"} />
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Soyad:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.surname}</p>
-                    </div>
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Telefon Numarası
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.mobileNumber}</p>
-                    </div>
+                    <UserDetail label={"Soyad"} value={currentUser.last_name} setCurrentUser={setCurrentUser} state={"last_name"} />
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Bölge
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.branch}</p>
-                    </div>
 
-                    <div className="user-list-user-info-group">
-                        <label className='user-info-label'>
-                            Grup:
-                        </label>
-                        <p className='user-list-user-info-text'>{currentUser.grup}</p>
+                    <UserDetail label={"Telefon Numarası"} value={currentUser.phone} setCurrentUser={setCurrentUser} state={"phone"} />
 
-                    </div>
+
+                    <UserDetail label={"Bölge"} value={currentUser.branch} setCurrentUser={setCurrentUser} state={"branch"} />
+
+
+                    <UserDetail label={"Grup"} value={currentUser.groups.map(group => group.name).join(',')} setCurrentUser={setCurrentUser} state={'groups'} />
 
                 </div>
 

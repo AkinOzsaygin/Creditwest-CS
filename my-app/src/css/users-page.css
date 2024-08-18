@@ -1,6 +1,7 @@
 .user-list-page {
     margin: .3rem;
     height: 100%;
+    position: relative;
 }
 
 .user-list-container {
@@ -76,7 +77,8 @@
 }
 
 .user-list-update-button:hover {
-    background: green;
+    background: rgb(65, 145, 102);
+    ;
     color: white;
 }
 
@@ -140,7 +142,8 @@ label {
 
 .user-list-permissions-list li:hover .user-page-selected-permission-arrrow {
     /* background: green; */
-    color: green;
+    color: rgb(65, 145, 102);
+    ;
 }
 
 .user-list-selected-permissions-list li:hover .user-page-selected-permission-arrrow-left {
@@ -289,4 +292,8 @@ h5 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+
+.no-permission-text {
+    padding: .3rem;
 }

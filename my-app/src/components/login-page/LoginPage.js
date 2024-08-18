@@ -35,7 +35,13 @@ const LoginPage = () => {
             if (response.status === 200) {
 
                 const data = await response.json()
-                const userAuth = { firstName: data.firstName, lastName: data.lastName, roles: data.groups }
+
+                const userAuth = {
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    roles: data.groups,
+                    token: data.token
+                }
 
                 console.log(data);
                 //set Auth Auth-Context and Local Storage

@@ -3,16 +3,16 @@ import UserDetailsPermissions from './UserDetailsPermissions'
 import UserDetailsSelectedPermissions from './UserDetailsSelectedPermissions'
 import UserDetailsButtons from './UserDetailsButtons'
 import UserInfos from './UserInfos'
-import permissionsData from "../../../data/permissions";
+import useAuth from '../../../hooks.js/useAuth'
 
-const UserDetails = ({ currentUser }) => {
+
+const UserDetails = ({ currentUser, setCurrentUser, setShowPopup, setPopupOptions }) => {
 
     const [permissions, setPermissions] = useState([]);
-    const [selectedPermissions, setSelectedPermissions] = useState([]);
+    const { auth } = useAuth();
 
     useEffect(() => {
         const getData = async () => {
-            //[coklu fetch kullanma] promise.all()
             try {
                 const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/')
                 const permissionData = await permisionResponse.json();
@@ -26,30 +26,46 @@ const UserDetails = ({ currentUser }) => {
 
     const selectPermission = (perId) => {
         const selectedPermission = permissions.find(per => per.id === perId)
-        setSelectedPermissions([selectedPermission, ...selectedPermissions])
+        const updatedCurrentUserPermissions = [...currentUser.user_permissions, selectedPermission]
+        setCurrentUser({ ...currentUser, user_permissions: updatedCurrentUserPermissions })
+
 
         const updatedPermissions = permissions.filter(per => per.id !== perId)
         setPermissions(updatedPermissions)
     }
 
     const removePermission = (perID) => {
-        const removedPermission = selectedPermissions.find(per => per.id === perID)
+        const removedPermission = currentUser.user_permissions.find(per => per.id === perID)
         setPermissions([removedPermission, ...permissions])
 
-        const updatedSelectedPermissons = selectedPermissions.filter(per => per.id !== perID)
-        setSelectedPermissions(updatedSelectedPermissons)
+        const updatedCurrentUserPermissions = currentUser.user_permissions.filter(per => per.id !== perID)
+        setCurrentUser({ ...currentUser, user_permissions: updatedCurrentUserPermissions })
     }
+
 
     return (
         <div className="users-page-user-details ">
 
-            <UserInfos currentUser={currentUser} />
+            <UserInfos
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+            />
 
-            <UserDetailsPermissions permissions={permissions} selectPermission={selectPermission} />
+            <UserDetailsPermissions
+                permissions={permissions}
+                selectPermission={selectPermission}
+            />
 
-            <UserDetailsSelectedPermissions selectedPermissions={selectedPermissions} removePermission={removePermission} />
+            <UserDetailsSelectedPermissions
+                selectedPermissions={currentUser.user_permissions}
+                removePermission={removePermission}
+            />
 
-            <UserDetailsButtons />
+            <UserDetailsButtons
+                setPopupOptions={setPopupOptions}
+                setShowPopup={setShowPopup}
+                id={currentUser.id}
+            />
 
         </div>
     )

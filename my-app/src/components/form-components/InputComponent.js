@@ -20,6 +20,7 @@ function InputComponent({ label, id, type, value, onChange, placeholder }) {
         <div className="form-group-register">
             <label htmlFor={id}>{label}</label>
             <input
+                autoComplete='off'
                 type={type}
                 id={id}
                 value={value}

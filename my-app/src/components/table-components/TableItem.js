@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
+import { v4 as uuid } from 'uuid';
 
 const TableItem = ({ item, setCurrentItem }) => {
 
-    console.log(item);
     const style = {
         background: item.isActive ? 'rgb(230,230,230)' : 'white'
     }
@@ -11,9 +11,20 @@ const TableItem = ({ item, setCurrentItem }) => {
         const cellArr = [];
         for (const cellData in item) {
 
-            if (cellData !== 'checkImage' && cellData !== 'isActive') {
-                console.log(cellData);
-                cellArr.push(<td>{item[cellData]}</td>)
+            if (cellData !== 'checkImage' && cellData !== 'isActive' && cellData !== 'user_permissions' && cellData !== 'password') {
+
+                if (typeof item[cellData] === 'object') {
+                    if (item[cellData].length > 0) {
+                        cellArr.push(<td key={uuid()}>{item[cellData][0].name}</td>)
+                    } else {
+                        cellArr.push(<td key={uuid()}>Null</td>)
+                    }
+
+
+                } else {
+                    cellArr.push(<td key={uuid()}>{item[cellData]}</td>)
+                }
+
             }
         }
         return cellArr
