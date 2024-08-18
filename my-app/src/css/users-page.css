@@ -18,9 +18,8 @@
 
 .users-page-user-details {
     display: flex;
-    height: 27%;
+    height: 200px;
     gap: 0 5px;
-    max-height: 200px;
 }
 
 .user-list-details-column-wrapper {
@@ -95,12 +94,12 @@
 
 .user-list-user-search-filter-bar {
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
-    height: 8%;
+    height: 55px;
 }
 
 .user-list-table {
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
-    height: 65%;
+    flex-grow: 1;
 }
 
 label {
