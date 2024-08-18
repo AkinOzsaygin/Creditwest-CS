@@ -18,8 +18,9 @@
 
 .users-page-user-details {
     display: flex;
-    height: 25%;
+    height: 27%;
     gap: 0 5px;
+    max-height: 200px;
 }
 
 .user-list-details-column-wrapper {
@@ -78,7 +79,6 @@
 
 .user-list-update-button:hover {
     background: rgb(65, 145, 102);
-    ;
     color: white;
 }
 
@@ -100,7 +100,7 @@
 
 .user-list-table {
     box-shadow: 1px 1px 3px rgba(28, 28, 167, 0.485);
-    height: 67%;
+    height: 65%;
 }
 
 label {
@@ -163,7 +163,6 @@ label {
 
 
 .user-list-user-permissions-column {
-    max-height: 180px;
     overflow-y: scroll;
     padding: 0rem .3rem .3rem .3rem;
 }
