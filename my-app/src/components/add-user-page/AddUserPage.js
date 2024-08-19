@@ -26,19 +26,12 @@ const AddUserPage = () => {
     });
 
     console.log(formData);
-    const branches = [
-        {
-            id: 1,
-            name: "SARAYÖNÜ ŞÜBESİ"
-        },
-        {
-            id: 2,
-            name: "SARAYÖNÜ ŞÜBESİii"
-        }
-    ]
+
     const [permissions, setPermissions] = useState([]);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
     const [groups, setGroups] = useState([]);
+    const [branches, setBranches] = useState([]);
+
 
     const [showPopup, setShowPopup] = useState(false);
 
@@ -54,8 +47,13 @@ const AddUserPage = () => {
                 const groupResponse = await fetch('http://127.0.0.1:8000/groups/')
                 const groupData = await groupResponse.json()
 
+
+                const branchResponse = await fetch('http://127.0.0.1:8000/branch/');
+                const branchData = await branchResponse.json();
+
                 setPermissions(permissionData)
                 setGroups(groupData)
+                setBranches(branchData)
             } catch (e) {
                 console.log(e);
             }
