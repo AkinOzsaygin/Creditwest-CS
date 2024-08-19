@@ -16,7 +16,7 @@ const UserDetails = ({ currentUser, setCurrentUser, setShowPopup, setPopupOption
             try {
                 const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/')
                 const permissionData = await permisionResponse.json();
-                setPermissions([])
+                setPermissions(permissionData)
             } catch (e) {
                 console.log(e);
             }

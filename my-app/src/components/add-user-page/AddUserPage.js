@@ -13,18 +13,29 @@ const branchs = []
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
-        firstName: 'user_first_name',
-        lastName: 'user_first_name',
-        username: 'username11',
-        employeeid: '12345678101',
-        branch: '1',
-        email: 'app1@mail.com',
-        phoneNumber: '100000',
-        password: '12345678',
+        firstName: '',
+        lastName: '',
+        username: '',
+        employeeid: '',
+        branch: [],
+        email: '',
+        phoneNumber: '',
+        password: '',
         groups: [1],
         user_permissions: []
     });
 
+    console.log(formData);
+    const branches = [
+        {
+            id: 1,
+            name: "SARAYÖNÜ ŞÜBESİ"
+        },
+        {
+            id: 2,
+            name: "SARAYÖNÜ ŞÜBESİii"
+        }
+    ]
     const [permissions, setPermissions] = useState([]);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
     const [groups, setGroups] = useState([]);
@@ -187,6 +198,7 @@ const AddUserPage = () => {
                                 onChange={handleChange}
                                 placeholder={"Personel Soyismi"}
                             />
+
                             <SelectOptions
                                 name={'groups'}
                                 onChange={handleChange}
@@ -195,8 +207,10 @@ const AddUserPage = () => {
                                 placeholder={"Lütfen rol seçiniz"}
                             />
                             <SelectOptions
+                                name={'branch'}
+                                onChange={handleChange}
                                 label="Şube"
-                                options={branchs}
+                                options={branches}
                                 placeholder={"Lütfen şube seçiniz"}
 
                             />

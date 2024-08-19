@@ -28,6 +28,7 @@ th {
 
 td {
     padding: .5rem 0;
+    text-transform: capitalize;
 }
 
 .scanned-checks-table {
