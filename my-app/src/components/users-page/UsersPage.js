@@ -37,6 +37,8 @@ const UsersPage = () => {
 
     const [popUpOptions, setPopupOptions] = useState({});
 
+    const x = currentUser?.first_name[0]?.toUpperCase() + currentUser.first_name.slice(1)
+    console.log(x);
     useEffect(() => {
 
         const getUsers = async () => {
@@ -98,6 +100,8 @@ const UsersPage = () => {
 
         const updateUser = {
             ...currentUser,
+            first_name: currentUser?.first_name[0]?.toUpperCase() + currentUser.first_name.slice(1),
+            last_name: currentUser?.last_name[0]?.toUpperCase() + currentUser.last_name.slice(1),
             groups: currentUser.groups.map(group => group.id),
             user_permissions: currentUser.user_permissions.map(permission => permission.id),
             password: !currentUser.newPassword ? currentUser.password : currentUser.newPassword

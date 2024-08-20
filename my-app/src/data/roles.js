@@ -1,6 +1,6 @@
 const ROLES = {
-    user: 1,
-    admin: 2,
+    user: 2,
+    admin: 4,
     manager: 3,
 }
 

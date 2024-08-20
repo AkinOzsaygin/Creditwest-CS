@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import '../../css/register-page.css';
 import { v4 as uuid } from 'uuid';
-import permissionsData from "../../data/permissions";
 import InputComponent from "../form-components/InputComponent";
 import SelectOptions from "../form-components/SelectOptions";
 import { FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
 import Popup from "../form-components/Popup";
-
-
-const branchs = []
 
 const AddUserPage = () => {
     const [formData, setFormData] = useState({
@@ -25,17 +21,15 @@ const AddUserPage = () => {
         user_permissions: []
     });
 
-    console.log(formData);
-
     const [permissions, setPermissions] = useState([]);
     const [selectedPermissions, setSelectedPermissions] = useState([]);
     const [groups, setGroups] = useState([]);
     const [branches, setBranches] = useState([]);
 
-
     const [showPopup, setShowPopup] = useState(false);
 
     const [popUpMessage, setPopupMessage] = useState("");
+
 
     useEffect(() => {
         const getData = async () => {
@@ -99,10 +93,10 @@ const AddUserPage = () => {
             email: formData.email,
             username: formData.username,
             password: formData.password,
-            first_name: formData.firstName,
-            last_name: formData.lastName,
+            first_name: formData?.firstName[0]?.toUpperCase() + formData?.lastName.slice(1),
+            last_name: formData?.lastName[0]?.toUpperCase() + formData?.lastName.slice(1),
             employee_id: formData.employeeid,
-            branch: 1,
+            branch: parseInt(formData.branch),
             phone: formData.phoneNumber,
             groups: formData.groups,
             user_permissions: formData.user_permissions
