@@ -119,7 +119,7 @@ const AddUserPage = () => {
             const data = await response.json()
             const errorsArr = [];
             if (response.ok) {
-                setPopupMessage(`${formData.username} kullanıcılara eklendi !`);
+                setPopupMessage(`${formData.username} kullanıcı olarak eklendi !`);
                 setShowPopup(true);
             } else {
                 for (const errors in data) {
@@ -155,7 +155,7 @@ const AddUserPage = () => {
                                 id="username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                placeholder={"Personel019"}
+                                placeholder={"Personel01"}
                             />
 
                             <InputComponent
@@ -221,8 +221,6 @@ const AddUserPage = () => {
                                 placeholder={"+90(533)___ __ __"}
                             />
 
-
-
                             <button type="submit" className="register-button">EKLE</button>
 
                         </div>
@@ -230,12 +228,12 @@ const AddUserPage = () => {
                         <div className="register-column">
 
                             <div className="register-permissions-list-container">
-                                <label>Mevcut İzinler</label>
+                                <label><h2 className="available-permissions-title">Mevcut İzinler</h2></label>
                                 <ul className="available-permissions-list">
                                     {permissions.length > 0
                                         ? permissions.map(per => (
                                             <li key={uuid()} onClick={() => selectPermission(per.id)}>{per.name}
-                                                <FaRegArrowAltCircleDown className="availablePermissions-down-arrow"></FaRegArrowAltCircleDown>
+                                                <FaRegArrowAltCircleDown className="available-permissions-down-arrow"></FaRegArrowAltCircleDown>
                                             </li>
                                         ))
                                         : <p>Mevcut izin bulunmamakta</p>
@@ -244,12 +242,12 @@ const AddUserPage = () => {
                             </div>
 
                             <div className="register-permissions-list-container">
-                                <label className="">Şecilmiş İzinler</label>
+                                <label><h2 className="selected-permissions-title">Şecilmiş İzinler</h2></label>
                                 <ul className="selected-permissions-list">
                                     {selectedPermissions.length > 0
                                         ? selectedPermissions.map(per => (
                                             <li key={uuid()} onClick={() => removePermission(per.id)}>{per.name}
-                                                <FaRegArrowAltCircleUp className="selectedPermissions-up-arrow"></FaRegArrowAltCircleUp>
+                                                <FaRegArrowAltCircleUp className="selected-permissions-up-arrow"></FaRegArrowAltCircleUp>
                                             </li>
                                         ))
                                         : "Seçili izin bulunmamakta"
