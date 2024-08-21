@@ -44,7 +44,6 @@ const UsersPage = () => {
                 const headersList = {
                     "Authorization": `Bearer ${auth.token.access}`,
                 };
-                let user = 12;
                 const response = await fetch('http://127.0.0.1:8000/users', { headers: headersList })
                 const data = await response.json();
 
@@ -112,7 +111,7 @@ const UsersPage = () => {
         const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, options);
         const data = await response.json();
         console.log(data);
-
+        
 
         if (response.ok) {
             setUsers(prevUsers => prevUsers.map(user => user.id === id ? currentUser : user))

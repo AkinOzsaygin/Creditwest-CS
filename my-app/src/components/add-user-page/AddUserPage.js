@@ -39,27 +39,29 @@ const AddUserPage = () => {
 
     useEffect(() => {
         const getData = async () => {
-            //[coklu fetch kullanma] promise.all()
             try {
-                const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/')
+                const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/');
                 const permissionData = await permisionResponse.json();
-
-                const groupResponse = await fetch('http://127.0.0.1:8000/groups/')
-                const groupData = await groupResponse.json()
-
-
+                console.log('Permissions:', permissionData);
+    
+                const groupResponse = await fetch('http://127.0.0.1:8000/groups/');
+                const groupData = await groupResponse.json();
+                console.log('Groups:', groupData);
+    
                 const branchResponse = await fetch('http://127.0.0.1:8000/branch/');
                 const branchData = await branchResponse.json();
-
-                setPermissions(permissionData)
-                setGroups(groupData)
-                setBranches(branchData)
+                console.log('Branches:', branchData);
+    
+                setPermissions(permissionData);
+                setGroups(groupData);
+                setBranches(branchData);
             } catch (e) {
                 console.log(e);
             }
-        }
-        getData()
-    }, [])
+        };
+        getData();
+    }, []);
+    
 
     useEffect(() => {
         const selectedPermisionIds = selectedPermissions.map(permission => permission.id)
@@ -102,7 +104,7 @@ const AddUserPage = () => {
             first_name: formData.firstName,
             last_name: formData.lastName,
             employee_id: formData.employeeid,
-            branch: 1,
+            branch: formData.branch,
             phone: formData.phoneNumber,
             groups: formData.groups,
             user_permissions: formData.user_permissions
@@ -119,8 +121,7 @@ const AddUserPage = () => {
             const data = await response.json()
             const errorsArr = [];
             if (response.ok) {
-                setPopupMessage(`${formData.username} kullanıcı olarak eklendi !`);
-                setShowPopup(true);
+                setPopupMessage(`${formData.username} kullanıcı olarak eklendi !`);                setShowPopup(true);
             } else {
                 for (const errors in data) {
                     data[errors].forEach(item => errorsArr.push(item));
@@ -132,7 +133,7 @@ const AddUserPage = () => {
             console.log(e);
         }
     };
-
+    
 
     return (
         <main className="register-page">
@@ -172,7 +173,7 @@ const AddUserPage = () => {
                                 id="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                placeholder={"****"}
+                                placeholder={""}
                             />
 
                             <InputComponent
@@ -201,16 +202,15 @@ const AddUserPage = () => {
                                 name={'groups'}
                                 onChange={handleChange}
                                 label="Group"
-                                options={groups}
+                                options={Array.isArray(groups) ? groups : []}
                                 placeholder={"Lütfen rol seçiniz"}
                             />
                             <SelectOptions
                                 name={'branch'}
                                 onChange={handleChange}
                                 label="Şube"
-                                options={branches}
+                                options={Array.isArray(branches) ? branches : []}
                                 placeholder={"Lütfen şube seçiniz"}
-
                             />
                             <InputComponent
                                 label="Telefon Numarası"
@@ -272,5 +272,4 @@ const AddUserPage = () => {
     );
 };
 
-export default AddUserPage;
-
+export default AddUserPage;
