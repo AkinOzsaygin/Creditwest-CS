@@ -15,8 +15,6 @@ const CheckScanPage = () => {
 
     const { auth } = useAuth();
 
-    const checkData = fakeCheckData;
-
     const checkSequnceReverse = useRef(false);
 
     //Tablo daki indexi tutabilmek currentIndex degeri
@@ -37,20 +35,25 @@ const CheckScanPage = () => {
     //Ilk default cek icin data
     const [currentCheck, setCurrentCheck] = useState({
         checkSequnce: 0,
-        checkNumber: '',
-        checkOwner: '',
-        accountNumber: '',
-        bankName: '',
+        check_number: '',
+        check_owner: '',
+        account_number: '',
+        bank_number: '',
         branchName: '',
         regionName: '',
         payeeName: '',
         checkDate: '',
-        checkCurrency: '',
-        checkAmount: '',
-        checkImage: placeHolderImage,
+        currency: '',
+        check_amount: '',
+        front_image: placeHolderImage,
+        back_image:placeHolderImage,
         isActive: false,
     });
 
+
+
+    console.log(currentCheck);
+    
     ///currentCheck her degistiginde currentIndex de degisecek
     useEffect(() => {
         let currentindex;
@@ -91,7 +94,24 @@ const CheckScanPage = () => {
             console.log("Hello Worlzzd");
             const response = await fetch('http://127.0.0.1:8000/checks/get/');
             const data = await response.json()
-            console.log(data);
+            let checkSequenceCount = 0;
+            const updatedChecks = data.map(check => {
+                checkSequenceCount = checkSequenceCount + 1
+                return {
+                    checkSequnce: checkSequenceCount,
+                    check_owner: check.check_owner,
+                    account_number: check.account_number,
+                    check_number: check.check_number,
+                    bank_number: check.bank_number,
+                    ...check,
+                    isActive: false, 
+                }
+            })
+            
+            console.log(updatedChecks.length);
+            
+            setScannedChecks(updatedChecks)
+            setCurrentCheck({...updatedChecks[0], isActive:true})
         },20000)
         
         // const randomNum = Math.floor(Math.random() * 4);
@@ -127,17 +147,17 @@ const CheckScanPage = () => {
                     <CheckDetails
                         isLoading={isLoading}
                         checkSequence={currentCheck.checkSequnce}
-                        bankName={currentCheck.bankName}
-                        checkOwner={currentCheck.checkOwner}
-                        accountNumber={currentCheck.accountNumber}
-                        checkNumber={currentCheck.checkNumber}
-                        checkAmount={currentCheck.checkAmount}
+                        bankName={currentCheck.bank_number}
+                        checkOwner={currentCheck.check_owner}
+                        accountNumber={currentCheck.account_number}
+                        checkNumber={currentCheck.check_number}
+                        checkAmount={currentCheck.check_amount}
                         setCurrentCheck={setCurrentCheck}
                         checkDate={currentCheck.checkDate}
                         payeeName={currentCheck.payeeName}
                         branchName={currentCheck.branchName}
                         regionName={currentCheck.regionName}
-                        checkCurrency={currentCheck.checkCurrency}
+                        checkCurrency={currentCheck.currency}
                     />
 
                 </div>
@@ -145,7 +165,7 @@ const CheckScanPage = () => {
                 {/* Cek resminin ortalama bir boyutta gosterildigi copmonent  */}
                 <CheckImage
                     isLoading={isLoading}
-                    checkImage={currentCheck.checkImage}
+                    checkImage={currentCheck.front_image}
                     showCheckImage={showCheckView}
                     setCurrentCheck={setCurrentCheck}
                     scannedChecks={scannedChecks}
@@ -166,7 +186,7 @@ const CheckScanPage = () => {
                 {
                     isCheckView &&
                     <>
-                        <CheckView checkImage={currentCheck.checkImage} />
+                        <CheckView checkImage={currentCheck.front_image?.length < 100 ? currentCheck.front_image : `data:image/png;base64,${currentCheck.front_image}`} />
                         <Overlay setIsCheckView={setIsCheckView} isCheckView={isCheckView} />
                     </>
                 }

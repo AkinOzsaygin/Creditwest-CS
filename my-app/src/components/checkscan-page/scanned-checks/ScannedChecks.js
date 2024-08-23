@@ -6,13 +6,13 @@ import TableItems from '../../table-components/TableItems';
 
 const ScannedChecks = ({ scannedChecks, setCurrentCheck }) => {
 
-    const headerNames = ['Çek Sırası', 'Çek Numarası', 'Çek Sahibi', 'Hesap Numarası', 'Banka', 'Şube', 'Bölge', 'Ödenecek Kişi', 'Çek Tarihi', 'Para Birimi', 'Çek Miktari']
+    const headerNames = ['Çek Sırası', 'Çek Sahibi', 'Hesap Numarası', 'Çek Numarası', 'Şube', 'Bölge', 'Ödenecek Kişi', 'Çek Tarihi', 'Para Birimi', 'Çek Miktari']
+
 
     return (
         <div className="scanned-checks-container">
 
             <h3 className="container-sub-title">Okunmuş Çekler</h3>
-
 
             <Table>
                 <TableHeaders headers={headerNames} />

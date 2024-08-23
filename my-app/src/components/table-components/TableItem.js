@@ -11,20 +11,24 @@ const TableItem = ({ item, setCurrentItem }) => {
         const cellArr = [];
         for (const cellData in item) {
 
-            if (cellData !== 'checkImage' && cellData !== 'isActive' && cellData !== 'user_permissions' && cellData !== 'password') {
+            if (
+                cellData !== 'front_image' &&
+                cellData !== 'back_image' && 
+                cellData !== 'isActive' && 
+                cellData !== 'user_permissions' &&
+                cellData !== 'id' &&
+                cellData !== 'password') {
 
                 if (typeof item[cellData] === 'object') {
-                    if (item[cellData].length > 0) {
+                    if (item[cellData]?.length > 0) {
                         cellArr.push(<td key={uuid()}>{item[cellData][0].name}</td>)
                     } else {
-                        cellArr.push(<td key={uuid()}>Null</td>)
+                        cellArr.push(<td key={uuid()}></td>)
                     }
-
 
                 } else {
                     cellArr.push(<td key={uuid()}>{item[cellData]}</td>)
                 }
-
             }
         }
         return cellArr
