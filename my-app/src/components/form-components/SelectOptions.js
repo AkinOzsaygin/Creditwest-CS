@@ -16,7 +16,7 @@ const SelectOptions = ({ label, name, value, options, onChange, placeholder }) =
             >
                 <option value="">{placeholder}</option>
                 {options.map(option => (
-                    <option key={option.id} value={option.id ? option.id : option.branch_code}>
+                    <option key={uuid()} value={option.id ? option.id : option.branch_id}>
                         {option.name ? option.name : option.branch_name}
                     </option>
                 ))}

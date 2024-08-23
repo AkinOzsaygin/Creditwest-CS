@@ -13,7 +13,7 @@ const AddUserPage = () => {
         lastName: '',
         username: '',
         employeeid: '',
-        branch: [],
+        branch: '',
         email: '',
         phoneNumber: '',
         password: '',
@@ -21,6 +21,8 @@ const AddUserPage = () => {
         user_permissions: []
     });
 
+    console.log(formData);
+    
     const [permissions, setPermissions] = useState([]);
 
     const [selectedPermissions, setSelectedPermissions] = useState([]);
@@ -101,12 +103,14 @@ const AddUserPage = () => {
             first_name: formData?.firstName[0]?.toUpperCase() + formData?.lastName.slice(1),
             last_name: formData?.lastName[0]?.toUpperCase() + formData?.lastName.slice(1),
             employee_id: formData.employeeid,
-            branch: parseInt(formData.branch),
+            branch_id: parseInt(formData.branch),
             phone: formData.phoneNumber,
             groups: formData.groups,
             user_permissions: formData.user_permissions
         }
 
+    
+        
         const options = {
             method: "POST",
             headers: new Headers({ 'content-type': 'application/json' }),
@@ -116,6 +120,8 @@ const AddUserPage = () => {
         try {
             const response = await fetch('http://127.0.0.1:8000/users/signup/', options);
             const data = await response.json()
+            console.log(data);
+            
             const errorsArr = [];
             if (response.ok) {
                 setPopupMessage(`${formData.username} kullanıcı olarak eklendi !`); setShowPopup(true);

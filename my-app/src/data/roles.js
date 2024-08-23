@@ -1,7 +1,7 @@
 const ROLES = {
     user: 2,
-    admin: 4,
-    manager: 3,
+    admin: 3,
+    manager: 4,
 }
 
 
