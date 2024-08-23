@@ -9,11 +9,11 @@ const ScannerDetails = ({ checkScan, scannedCheckCount }) => {
             <div className="scanner-details-flex">
                 <h3 className="container-sub-title">Çek Okuyucu Bilgieri</h3>
 
-                <a href="http://127.0.0.1:8000/scan/ConsoleCheckScannerExample.application" className="check-scan-button-link">
+                {/* <a href="http://127.0.0.1:8000/scan/ConsoleCheckScannerExample.application" className="check-scan-button-link"> */}
                     <button onClick={checkScan} className="check-scan-button">
                         Cek Oku
                     </button>
-                </a>
+                {/* </a> */}
 
             </div>
 

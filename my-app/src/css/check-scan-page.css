@@ -228,6 +228,13 @@
     z-index: 999;
 }
 
+.check-view-image-button{
+    position: absolute;
+    left: 100%;
+    bottom: 105%;
+    color: white;
+}
+
 .overlay {
     position: absolute;
     top: 0;

@@ -32,6 +32,9 @@ const CheckScanPage = () => {
     //cek sırası
     const [checkSequnce, setCheckSqeunce] = useState(0);
 
+
+    const [isFrontImage, setIsFrontImage] = useState(true)
+
     //Ilk default cek icin data
     const [currentCheck, setCurrentCheck] = useState({
         checkSequnce: 0,
@@ -52,7 +55,29 @@ const CheckScanPage = () => {
 
 
 
-    console.log(currentCheck);
+    useEffect(() => {
+        const getChecks = async () => {
+            const response = await fetch('http://127.0.0.1:8000/checks/get/');
+            const data = await response.json()
+            let checkSequenceCount = 0;
+            const updatedChecks = data.map(check => {
+                checkSequenceCount = checkSequenceCount + 1
+                return {
+                    checkSequnce: checkSequenceCount,
+                    check_owner: check.check_owner,
+                    account_number: check.account_number,
+                    check_number: check.check_number,
+                    bank_number: check.bank_number,
+                    ...check,
+                    isActive: false, 
+                }
+            })
+
+            setScannedChecks(updatedChecks)
+            setCurrentCheck({...updatedChecks[0], isActive:true})
+        }
+        getChecks();
+    },[])
     
     ///currentCheck her degistiginde currentIndex de degisecek
     useEffect(() => {
@@ -87,8 +112,12 @@ const CheckScanPage = () => {
     }
 
     //Cek okunma taklidi yap
-    const checkScan = () => {
+    const checkScan = async () => {
         console.log("Hello World");
+        
+        
+        const response = await fetch('http://127.0.0.1:8000/scan/ConsoleCheckScannerExample.application');
+        
         
         setTimeout( async () => {
             console.log("Hello Worlzzd");
@@ -186,7 +215,11 @@ const CheckScanPage = () => {
                 {
                     isCheckView &&
                     <>
-                        <CheckView checkImage={currentCheck.front_image?.length < 100 ? currentCheck.front_image : `data:image/png;base64,${currentCheck.front_image}`} />
+                        <CheckView 
+                            setIsFrontImage={setIsFrontImage}
+                            checkImage={currentCheck.front_image?.length < 100 
+                            ? currentCheck.front_image 
+                            : `data:image/png;base64,${isFrontImage ? currentCheck.front_image : currentCheck.back_image}`} />
                         <Overlay setIsCheckView={setIsCheckView} isCheckView={isCheckView} />
                     </>
                 }

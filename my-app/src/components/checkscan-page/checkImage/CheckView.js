@@ -1,10 +1,10 @@
 import React from 'react'
-
-const CheckView = ({checkImage}) => {
+import { FiRotateCw } from "react-icons/fi";
+const CheckView = ({checkImage, setIsFrontImage}) => {
   return (
     <div className='check-view'>
       <img  className='check-view-image' src={checkImage}></img>
-      <button className='check-view-image'>Dondur</button>
+      <FiRotateCw onClick={() => setIsFrontImage(prev => !prev)} className='check-view-image-button' size={40}/>
     </div>
 
     
