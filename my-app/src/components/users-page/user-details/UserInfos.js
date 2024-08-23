@@ -40,7 +40,7 @@ const UserInfos = ({ currentUser, setCurrentUser, newPassword, setNewPassword })
                     <UserDetail label={"Telefon Numarası"} value={currentUser.phone} setCurrentUser={setCurrentUser} state={"phone"} />
 
 
-                    <UserDetail label={"Bölge"} value={currentUser.branch} setCurrentUser={setCurrentUser} state={"branch"} />
+                    <UserDetail label={"Şube Kodu"} value={currentUser.branch} setCurrentUser={setCurrentUser} state={"branch_code"} />
 
 
                     <UserDetail label={"Grup"} value={currentUser.groups.map(group => group.name).join(',')} setCurrentUser={setCurrentUser} state={'groups'} />

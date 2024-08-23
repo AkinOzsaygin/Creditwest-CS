@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserDetails from "./user-details/UserDetails";
 import UsersTable from "./users-table/UsersTable";
 import UsersFilter from "./users-filter/UsersFilter";
@@ -25,75 +25,93 @@ const UsersPage = () => {
     );
 
     const [search, setSearch] = useState('');
-
-    const [searchOption, setSearchOption] = useState('Kullanıcı Adı')
-
-    const [users, setUsers] = useState([])
-
+    const [searchOption, setSearchOption] = useState('Kullanıcı Adı');
+    const [users, setUsers] = useState([]);
+    const [filteredUsers, setFilteredUsers] = useState([]); // Add state to manage filtered users
     const { auth } = useAuth();
-
-    const [showPopup, setShowPopup] = useState(false)
-
+    const [showPopup, setShowPopup] = useState(false);
     const [popUpOptions, setPopupOptions] = useState({});
+    const [sortOrder, setSortOrder] = useState(null); // State to manage sorting
 
     const [newPassword, setNewPassword] = useState("")
 
     useEffect(() => {
-
         const getUsers = async () => {
             try {
                 const headersList = {
                     "Authorization": `Bearer ${auth.token.access}`,
                 };
-                let user = 12;
-                const response = await fetch('http://127.0.0.1:8000/users', { headers: headersList })
+                const response = await fetch('http://127.0.0.1:8000/users', { headers: headersList });
                 const data = await response.json();
                 if (response.ok) {
                     const updatedUsers = data.map(user => ({ ...user, isActive: false }));
-                    setUsers(updatedUsers)
-                    setCurrentUser(updatedUsers[0])
+                    setUsers(updatedUsers);
+                    setFilteredUsers(updatedUsers); // Initially set filtered users as all users
+                    setCurrentUser(updatedUsers[0]);
                 }
             } catch (e) {
                 console.log(e);
             }
-        }
-
+        };
         getUsers();
     }, [])
 
     useEffect(() => {
         const _updatedUsers = users.map(user => {
-            user.id === currentUser.id ? user.isActive = true : user.isActive = false
-            return user
+            user.id === currentUser.id ? user.isActive = true : user.isActive = false;
+            return user;
         });
-        setUsers(_updatedUsers)
-    }, [currentUser])
+        setFilteredUsers(_updatedUsers); // Update filtered users
+    }, [currentUser, users]);
 
+    const handleSearch = () => {
+        const searchValue = search.toLowerCase();
+        const key = searchOption.toLowerCase().replace(" ", "_");
+
+        const filteredUsers = users.filter(user => {
+            return (
+                (key === 'kullanıcı_adı' && user.username.toLowerCase().includes(searchValue)) ||
+                (key === 'kimlik_numarası' && user.employee_id.toLowerCase().includes(searchValue)) ||
+                (key === 'email' && user.email.toLowerCase().includes(searchValue)) ||
+                (key === 'telefon_numarası' && user.phone.includes(searchValue))
+            );
+        });
+
+        setFilteredUsers(filteredUsers);
+    };
+
+    const handleSort = () => {
+        const key = searchOption.toLowerCase().replace(" ", "_");
+        const sorted = [...filteredUsers].sort((a, b) => {
+            if (sortOrder === "asc") {
+                return a[key] > b[key] ? 1 : -1;
+            } else {
+                return a[key] < b[key] ? 1 : -1;
+            }
+        });
+
+        setFilteredUsers(sorted);
+        setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    };
 
     const deleteUser = async (id) => {
-
         try {
-            //request options
             const options = {
                 method: "DELETE",
                 headers: new Headers({ "Authorization": `Bearer ${auth.token.access}` }),
-            }
+            };
 
-            //delete user from db
             const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, options);
 
-            //if response in 200 status delete user from state too
-            if (response.ok) setUsers(prevUsers => prevUsers.filter(user => user.id !== id))
+            if (response.ok) setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
 
-            setShowPopup(false)
-
+            setShowPopup(false);
         } catch (e) {
             console.log(e);
         }
-    }
+    };
 
     const updateUser = async (id) => {
-
         const updateUser = {
             ...currentUser,
             first_name: currentUser?.first_name[0]?.toUpperCase() + currentUser.first_name.slice(1),
@@ -105,18 +123,23 @@ const UsersPage = () => {
 
         const options = {
             method: "PUT",
-            headers: new Headers({ "Authorization": `Bearer ${auth.token.access}`, 'content-type': 'application/json' }),
+            headers: new Headers({
+                "Authorization": `Bearer ${auth.token.access}`,
+                "Content-Type": "application/json"
+            }),
             body: JSON.stringify(updateUser)
-        }
+        };
 
-        const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, options);
-        const data = await response.json();
-
-        if (response.ok) {
-            setUsers(prevUsers => prevUsers.map(user => user.id === id ? currentUser : user))
-            setShowPopup(false)
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/users/${id}/`, options);
+            if (response.ok) {
+                setUsers(prevUsers => prevUsers.map(user => user.id === id ? currentUser : user));
+                setShowPopup(false);
+            }
+        } catch (e) {
+            console.log(e);
         }
-    }
+    };
 
     return (
         <main className="user-list-page">
@@ -136,9 +159,14 @@ const UsersPage = () => {
                     setSearch={setSearch}
                     searchOption={searchOption}
                     setSearchOption={setSearchOption}
+                    handleSearch={handleSearch}
+                    handleSort={handleSort}
+                    setFilteredUsers={setFilteredUsers}
+                    users={users}
                 />
 
-                <UsersTable setCurrentUser={setCurrentUser} users={users} />
+                <UsersTable setCurrentUser={setCurrentUser} users={filteredUsers} />
+
             </div>
 
             <Popup
@@ -152,6 +180,6 @@ const UsersPage = () => {
             />
         </main>
     );
-}
+};
 
 export default UsersPage;

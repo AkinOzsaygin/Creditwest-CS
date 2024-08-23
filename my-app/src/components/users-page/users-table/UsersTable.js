@@ -5,7 +5,7 @@ import TableItems from '../../table-components/TableItems'
 
 const UsersTable = ({ setCurrentUser, users }) => {
 
-    const headerNames = ['id', 'Kimlik Numarası', 'Kullanıcı Adı', 'Ad', , 'Soyad', 'Email', 'Bolge', 'Telefon Numarası', "Grup"]
+    const headerNames = ['id', 'Kimlik Numarası', 'Kullanıcı Adı', 'Ad', , 'Soyad', 'Email', 'Şube Kodu', 'Telefon Numarası', "Grup"]
 
     return (
         <div className="user-list-table">

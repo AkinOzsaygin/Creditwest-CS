@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../css/not-found-page.css'
+
 const NotFoundedPage = () => {
     return (
         <>
