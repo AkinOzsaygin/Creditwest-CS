@@ -20,8 +20,7 @@ const UsersPage = () => {
             branch: "",
             groups: [],
             user_permissions: [],
-            isActive: false,
-            newPassword: ""
+            isActive: false
         }
     );
 
@@ -37,8 +36,8 @@ const UsersPage = () => {
 
     const [popUpOptions, setPopupOptions] = useState({});
 
-    const x = currentUser?.first_name[0]?.toUpperCase() + currentUser.first_name.slice(1)
-    console.log(x);
+    const [newPassword, setNewPassword] = useState("")
+
     useEffect(() => {
 
         const getUsers = async () => {
@@ -49,8 +48,6 @@ const UsersPage = () => {
                 let user = 12;
                 const response = await fetch('http://127.0.0.1:8000/users', { headers: headersList })
                 const data = await response.json();
-
-                console.log(data);
                 if (response.ok) {
                     const updatedUsers = data.map(user => ({ ...user, isActive: false }));
                     setUsers(updatedUsers)
@@ -63,7 +60,6 @@ const UsersPage = () => {
 
         getUsers();
     }, [])
-
 
     useEffect(() => {
         const _updatedUsers = users.map(user => {
@@ -104,7 +100,7 @@ const UsersPage = () => {
             last_name: currentUser?.last_name[0]?.toUpperCase() + currentUser.last_name.slice(1),
             groups: currentUser.groups.map(group => group.id),
             user_permissions: currentUser.user_permissions.map(permission => permission.id),
-            password: !currentUser.newPassword ? currentUser.password : currentUser.newPassword
+            password: !newPassword ? currentUser.password : newPassword
         }
 
         const options = {
@@ -131,6 +127,8 @@ const UsersPage = () => {
                     setCurrentUser={setCurrentUser}
                     setPopupOptions={setPopupOptions}
                     setShowPopup={setShowPopup}
+                    newPassword={newPassword}
+                    setNewPassword={setNewPassword}
                 />
 
                 <UsersFilter

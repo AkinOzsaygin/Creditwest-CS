@@ -6,7 +6,7 @@ import UserInfos from './UserInfos'
 import useAuth from '../../../hooks.js/useAuth'
 
 
-const UserDetails = ({ currentUser, setCurrentUser, setShowPopup, setPopupOptions }) => {
+const UserDetails = ({ currentUser, setCurrentUser, setShowPopup, setPopupOptions, newPassword, setNewPassword }) => {
 
     const [permissions, setPermissions] = useState([]);
     const { auth } = useAuth();
@@ -49,6 +49,8 @@ const UserDetails = ({ currentUser, setCurrentUser, setShowPopup, setPopupOption
             <UserInfos
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
+                newPassword={newPassword}
+                setNewPassword={setNewPassword}
             />
 
             <UserDetailsPermissions

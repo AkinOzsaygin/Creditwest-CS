@@ -1,7 +1,7 @@
 import React from 'react'
 import UserDetail from './UserDetail';
 
-const UserInfos = ({ currentUser, setCurrentUser }) => {
+const UserInfos = ({ currentUser, setCurrentUser, newPassword, setNewPassword }) => {
     const groups = currentUser.groups.map(group => group.name).join(' ');
 
 
@@ -20,7 +20,7 @@ const UserInfos = ({ currentUser, setCurrentUser }) => {
                     <UserDetail label={"Kullanıcı Adı"} value={currentUser.username} setCurrentUser={setCurrentUser} state={'username'} />
 
 
-                    <UserDetail label={"Sifre"} value={currentUser.newPassword} setCurrentUser={setCurrentUser} state={'newPassword'} type={'password'} />
+                    <UserDetail label={"Sifre"} value={newPassword} setCurrentUser={setNewPassword} state={'newPassword'} type={'password'} />
 
                     <UserDetail label={"Email"} value={currentUser.email} setCurrentUser={setCurrentUser} state={'email'} />
 

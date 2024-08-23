@@ -22,8 +22,11 @@ const AddUserPage = () => {
     });
 
     const [permissions, setPermissions] = useState([]);
+
     const [selectedPermissions, setSelectedPermissions] = useState([]);
+
     const [groups, setGroups] = useState([]);
+
     const [branches, setBranches] = useState([]);
 
     const [showPopup, setShowPopup] = useState(false);
@@ -33,7 +36,7 @@ const AddUserPage = () => {
 
     useEffect(() => {
         const getData = async () => {
-            //[coklu fetch kullanma] promise.all()
+
             try {
                 const permisionResponse = await fetch('http://127.0.0.1:8000/permissions/')
                 const permissionData = await permisionResponse.json();
