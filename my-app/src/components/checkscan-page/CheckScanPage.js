@@ -85,22 +85,31 @@ const CheckScanPage = () => {
 
     //Cek okunma taklidi yap
     const checkScan = () => {
-        const randomNum = Math.floor(Math.random() * 4);
-        const newCurrentCheck = { checkSequnce: checkSequnce + 1, isActive: false, ...checkData[randomNum] };
+        console.log("Hello World");
+        
+        setTimeout( async () => {
+            console.log("Hello Worlzzd");
+            const response = await fetch('http://127.0.0.1:8000/checks/get/');
+            const data = await response.json()
+            console.log(data);
+        },20000)
+        
+        // const randomNum = Math.floor(Math.random() * 4);
+        // const newCurrentCheck = { checkSequnce: checkSequnce + 1, isActive: false, ...checkData[randomNum] };
 
-        setIsLoading(true); //isLoading true yukleme islemi baslatildi spinner-loading goster
+        // setIsLoading(true); //isLoading true yukleme islemi baslatildi spinner-loading goster
 
-        setTimeout(() => {  //spinner-loading 2500ms gozukmesi icin isLoading degerini 2500ms sonra false yap
-            setCheckSqeunce(checkSequnce + 1); //cek sirasi arttir
-            setCurrentCheck(newCurrentCheck); //data ya check sqeunce properitsi ekle
-            setIsLoading(false);
-            if (!checkSequnceReverse.current) {
-                setScannedChecks([...scannedChecks, newCurrentCheck]);
-            } else {
-                setScannedChecks([newCurrentCheck, ...scannedChecks,]);
-            }
+        // setTimeout(() => {  //spinner-loading 2500ms gozukmesi icin isLoading degerini 2500ms sonra false yap
+        //     setCheckSqeunce(checkSequnce + 1); //cek sirasi arttir
+        //     setCurrentCheck(newCurrentCheck); //data ya check sqeunce properitsi ekle
+        //     setIsLoading(false);
+        //     if (!checkSequnceReverse.current) {
+        //         setScannedChecks([...scannedChecks, newCurrentCheck]);
+        //     } else {
+        //         setScannedChecks([newCurrentCheck, ...scannedChecks,]);
+        //     }
 
-        }, 1000);
+        // }, 1000);
 
     };
 

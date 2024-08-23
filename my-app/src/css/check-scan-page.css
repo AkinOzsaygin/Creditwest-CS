@@ -85,6 +85,11 @@
     cursor: pointer;
 }
 
+.check-scan-button{
+    text-decoration: none;
+    color: black;
+}
+
 .check-scan-button:hover {
     background: #015CA9;
     color: white;

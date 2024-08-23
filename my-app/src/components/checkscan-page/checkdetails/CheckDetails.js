@@ -44,7 +44,6 @@ const CheckDetails = (
                             <CheckDetail label={"Hesap Numarası:"} text={accountNumber} setCurrentCheck={setCurrentCheck} state={'accountNumber'} />
                             <CheckDetail label={"Çek Numarası:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'checkNumber'} />
                             <CheckDetail label={"Çek Miktarı:"} text={checkAmount} setCurrentCheck={setCurrentCheck} state={'checkAmount'} />
-
                         </div>
 
                         <div className="check-detail-labels-column">
