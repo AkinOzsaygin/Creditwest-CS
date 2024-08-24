@@ -1,7 +1,6 @@
 import React from "react";
 import { MagnifyingGlass } from 'react-loader-spinner';
 import CheckDetail from "./CheckDetail";
-import { TbSquareCheckFilled } from "react-icons/tb";
 import { TbRosetteDiscountCheck } from "react-icons/tb";
 
 const CheckDetails = (

@@ -48,6 +48,7 @@ const CheckImage = ({ checkImage, isLoading, showCheckImage, setCurrentCheck, sc
         }
     };
 
+
     return (
         <div className="check-image-container">
 
@@ -55,7 +56,7 @@ const CheckImage = ({ checkImage, isLoading, showCheckImage, setCurrentCheck, sc
 
             {
                 !isLoading
-                    ? <img className="check-image" src={checkImage?.length < 100 ? checkImage : `data:image/png;base64,${checkImage}`}></img>
+                    ? <img className="check-image" src={checkImage?.length < 200 ? checkImage : `data:image/png;base64,${checkImage}`}></img>
                     : <MagnifyingGlass
                         visible={true}
                         height="80"

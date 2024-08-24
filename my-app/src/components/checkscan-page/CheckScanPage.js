@@ -5,8 +5,7 @@ import CheckImage from "./checkImage/CheckImage";
 import ScannedChecks from "./scanned-checks/ScannedChecks";
 import placeHolderImage from '../../images/Filling-Out-A-Check-Date.webp';
 import CheckView from "./checkImage/CheckView";
-
-import fakeCheckData from "../../data/checkdata";
+import { v4 as uuid } from 'uuid';
 import Overlay from "./checkImage/Overlay";
 
 import useAuth from "../../hooks.js/useAuth";
@@ -49,36 +48,43 @@ const CheckScanPage = () => {
         currency: '',
         check_amount: '',
         front_image: placeHolderImage,
-        back_image:placeHolderImage,
+        back_image: placeHolderImage,
         isActive: false,
     });
 
+    console.log(currentCheck);
 
 
     useEffect(() => {
         const getChecks = async () => {
             const response = await fetch('http://127.0.0.1:8000/checks/get/');
-            const data = await response.json()
-            let checkSequenceCount = 0;
-            const updatedChecks = data.map(check => {
-                checkSequenceCount = checkSequenceCount + 1
-                return {
-                    checkSequnce: checkSequenceCount,
-                    check_owner: check.check_owner,
-                    account_number: check.account_number,
-                    check_number: check.check_number,
-                    bank_number: check.bank_number,
-                    ...check,
-                    isActive: false, 
-                }
-            })
+            const data = await response.json();
 
-            setScannedChecks(updatedChecks)
-            setCurrentCheck({...updatedChecks[0], isActive:true})
+            if (response.ok) {
+
+                if (data.length > 0) {
+                    let checkSequenceCount = 0;
+                    const updatedChecks = data.map(check => {
+                        checkSequenceCount = checkSequenceCount + 1
+                        return {
+                            checkSequnce: checkSequenceCount,
+                            check_owner: check.check_owner,
+                            account_number: check.account_number,
+                            check_number: check.check_number,
+                            bank_number: check.bank_number,
+                            ...check,
+                            isActive: false,
+                        }
+                    })
+
+                    setScannedChecks(updatedChecks)
+                    setCurrentCheck({ ...updatedChecks[0], isActive: true })
+                }
+            }
         }
         getChecks();
-    },[])
-    
+    }, [])
+
     ///currentCheck her degistiginde currentIndex de degisecek
     useEffect(() => {
         let currentindex;
@@ -113,13 +119,9 @@ const CheckScanPage = () => {
 
     //Cek okunma taklidi yap
     const checkScan = async () => {
-        console.log("Hello World");
-        
-        
-        const response = await fetch('http://127.0.0.1:8000/scan/ConsoleCheckScannerExample.application');
-        
-        
-        setTimeout( async () => {
+
+        const setChecks  = async () => {
+
             console.log("Hello Worlzzd");
             const response = await fetch('http://127.0.0.1:8000/checks/get/');
             const data = await response.json()
@@ -136,29 +138,49 @@ const CheckScanPage = () => {
                     isActive: false, 
                 }
             })
-            
+
             console.log(updatedChecks.length);
-            
+
             setScannedChecks(updatedChecks)
-            setCurrentCheck({...updatedChecks[0], isActive:true})
-        },20000)
-        
-        // const randomNum = Math.floor(Math.random() * 4);
-        // const newCurrentCheck = { checkSequnce: checkSequnce + 1, isActive: false, ...checkData[randomNum] };
+            setCurrentCheck({...updatedChecks[updatedChecks.length - 1], isActive:true})
+        }
+  
 
-        // setIsLoading(true); //isLoading true yukleme islemi baslatildi spinner-loading goster
+        const requestBody = {
+            scan_status: 300,
+            scan_status_message: "Waiting"
+        }
 
-        // setTimeout(() => {  //spinner-loading 2500ms gozukmesi icin isLoading degerini 2500ms sonra false yap
-        //     setCheckSqeunce(checkSequnce + 1); //cek sirasi arttir
-        //     setCurrentCheck(newCurrentCheck); //data ya check sqeunce properitsi ekle
-        //     setIsLoading(false);
-        //     if (!checkSequnceReverse.current) {
-        //         setScannedChecks([...scannedChecks, newCurrentCheck]);
-        //     } else {
-        //         setScannedChecks([newCurrentCheck, ...scannedChecks,]);
-        //     }
+        const options = {
+            method: "POST",
+            headers: new Headers({ 'content-type': 'application/json' }),
+            body: JSON.stringify(requestBody)
+        }
 
-        // }, 1000);
+        try {
+            const scanStatusResponse = await fetch("http://127.0.0.1:8000/scan_status/", options)
+            const scan_status_data = await scanStatusResponse.json()
+            
+            
+            if(scanStatusResponse.ok){
+                const response = fetch(`http://127.0.0.1:8000/scan/ConsoleCheckScannerExample.application?param1=${scan_status_data.data.id}`);
+            }
+    
+            
+            const scanStatusInterval = setInterval( async () => {
+                const scanStatusResponse = await fetch(`http://127.0.0.1:8000/scan_status/${scan_status_data.data.id}`)
+                const data = await scanStatusResponse.json();
+                console.log(data);
+                if(data.scan_status == 200){
+                    clearInterval(scanStatusInterval);
+                    setChecks()
+                }
+            }, 1500);
+    
+        } catch (e) {
+            console.log(e);
+        }
+
 
     };
 
@@ -215,11 +237,11 @@ const CheckScanPage = () => {
                 {
                     isCheckView &&
                     <>
-                        <CheckView 
+                        <CheckView
                             setIsFrontImage={setIsFrontImage}
-                            checkImage={currentCheck.front_image?.length < 100 
-                            ? currentCheck.front_image 
-                            : `data:image/png;base64,${isFrontImage ? currentCheck.front_image : currentCheck.back_image}`} />
+                            checkImage={currentCheck.front_image?.length < 100
+                                ? currentCheck.front_image
+                                : `data:image/png;base64,${isFrontImage ? currentCheck.front_image : currentCheck.back_image}`} />
                         <Overlay setIsCheckView={setIsCheckView} isCheckView={isCheckView} />
                     </>
                 }
