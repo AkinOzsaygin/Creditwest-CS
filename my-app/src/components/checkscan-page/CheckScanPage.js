@@ -120,9 +120,10 @@ const CheckScanPage = () => {
     //Cek okunma taklidi yap
     const checkScan = async () => {
 
+        setIsLoading(true);
+
         const setChecks  = async () => {
 
-            console.log("Hello Worlzzd");
             const response = await fetch('http://127.0.0.1:8000/checks/get/');
             const data = await response.json()
             let checkSequenceCount = 0;
@@ -173,6 +174,7 @@ const CheckScanPage = () => {
                 console.log(data);
                 if(data.scan_status == 200){
                     clearInterval(scanStatusInterval);
+                    setIsLoading(false);
                     setChecks()
                 }
             }, 1500);
@@ -230,7 +232,6 @@ const CheckScanPage = () => {
                     scannedChecks={scannedChecks}
                     setScannedChecks={setScannedChecks}
                 />
-
 
                 {/* Overlay copmonent  arka tarafi gölgelendirecek 
                 CheckView copmonent  ceki daha buyuk boyutta ekranin ortasinda gosterecek */}
