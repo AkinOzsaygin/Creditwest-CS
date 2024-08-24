@@ -5,6 +5,7 @@ import { TbRosetteDiscountCheck } from "react-icons/tb";
 
 const CheckDetails = (
     {
+        id,
         checkSequence,
         bankName,
         checkOwner,
@@ -13,11 +14,11 @@ const CheckDetails = (
         amount,
         isLoading,
         setCurrentCheck,
-        branchName,
         checkCurrency,
         checkDate,
         payee_name,
-        regionName
+        regionName,
+        updateCheck
     }
 ) => {
 
@@ -25,11 +26,14 @@ const CheckDetails = (
         <div className="check-details-container">
             <div style={{ display: 'flex', alignItems: "center", justifyContent: "space-between", marginBottom: '.3rem' }}>
                 <h3 style={{ margin: '0' }} className="container-sub-title">Çek Bilgileri</h3>
-                <button className="confirm-button" >
+                <button onClick={() => {updateCheck(id)}} className="confirm-button" >
                     Onayla
                     <TbRosetteDiscountCheck className="confirm-button-icon" size={17} />
                 </button>
-
+                {/* <button onClick={() => {updateCheck(id)}} className="confirm-button" >
+                    Reddet
+                    <TbRosetteDiscountCheck className="confirm-button-icon" size={17} />
+                </button> */}
             </div>
 
             {!isLoading

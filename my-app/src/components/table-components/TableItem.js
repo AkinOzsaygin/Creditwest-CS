@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { v4 as uuid } from 'uuid';
+import { PiCircleDashedFill } from "react-icons/pi";
 
 const TableItem = ({ item, setCurrentItem }) => {
 
@@ -20,7 +21,8 @@ const TableItem = ({ item, setCurrentItem }) => {
                 cellData !== 'password' &&
                 cellData !== "scan_date" &&
                 cellData !== "customer_id") {
-
+                   
+                    
                     if (typeof item[cellData] === 'object') {
 
                         if (item[cellData]?.length > 0) {
@@ -34,9 +36,14 @@ const TableItem = ({ item, setCurrentItem }) => {
                         }
 
                     } else {
-
-                        cellArr.push(<td key={uuid()}>{item[cellData]}</td>)
-
+                        if(cellData === 'check_status'){
+                            cellArr.push(<td key={uuid()} style={{textAlign:'center'}}>
+                                <PiCircleDashedFill color={item[cellData] == 300 ? 'orange': item[cellData] == 200 ? 'green' : 'red'}/>
+                            </td>)
+                        } else
+                            cellArr.push(<td key={uuid()}>
+                                {item[cellData]}
+                            </td>)
                     }
             }
         }

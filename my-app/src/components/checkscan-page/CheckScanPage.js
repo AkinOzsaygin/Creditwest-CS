@@ -36,6 +36,7 @@ const CheckScanPage = () => {
 
     //Ilk default cek icin data
     const [currentCheck, setCurrentCheck] = useState({
+        id:'',
         checkSequnce: 0,
         check_number: '',
         check_owner: '',
@@ -45,7 +46,7 @@ const CheckScanPage = () => {
         branchName: '',
         regionName: '',
         payee_name: '',
-        checkDate: '',
+        date: '',
         currency: '',
         front_image: placeHolderImage,
         back_image: placeHolderImage,
@@ -189,9 +190,21 @@ const CheckScanPage = () => {
         } catch (e) {
             console.log(e);
         }
-
-
     };
+
+    const updateCheck = async (id) => {
+        if(scannedChecks.length > 0){
+            const updatedChecks = scannedChecks.map(check => {
+                if(check.id === id){
+                    check.check_status = 200;
+                }
+    
+                return check
+            })
+    
+            setScannedChecks(updatedChecks)
+        }
+    }
 
 
     return (
@@ -205,19 +218,21 @@ const CheckScanPage = () => {
 
                     {/* Cek Okunduktan sonra cek bilgilerinin bulundugu component */}
                     <CheckDetails
-                        isLoading={isLoading}
+                        id={currentCheck.id}
                         checkSequence={currentCheck.checkSequnce}
                         bankName={currentCheck.bank_number}
                         checkOwner={currentCheck.check_owner}
                         accountNumber={currentCheck.account_number}
                         checkNumber={currentCheck.check_number}
                         amount={currentCheck.amount}
-                        setCurrentCheck={setCurrentCheck}
-                        checkDate={currentCheck.checkDate}
+                        checkDate={currentCheck.date}
                         payee_name={currentCheck.payee_name}
                         branchName={currentCheck.branchName}
                         regionName={currentCheck.regionName}
                         checkCurrency={currentCheck.currency}
+                        isLoading={isLoading}
+                        setCurrentCheck={setCurrentCheck}
+                        updateCheck={updateCheck}
                     />
 
                 </div>
