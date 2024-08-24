@@ -10,13 +10,13 @@ const CheckDetails = (
         checkOwner,
         accountNumber,
         checkNumber,
-        checkAmount,
+        amount,
         isLoading,
         setCurrentCheck,
         branchName,
         checkCurrency,
         checkDate,
-        payeeName,
+        payee_name,
         regionName
     }
 ) => {
@@ -37,17 +37,17 @@ const CheckDetails = (
                     <div className="check-detail-labels-container">
                         <div className="check-detail-labels-column">
 
-                            <CheckDetail label={"Çek Sırası:"} text={checkSequence} setCurrentCheck={setCurrentCheck} state={'checkSequnce'} />
+                            <CheckDetail label={"Çek Sırası:"} disabled={true} text={checkSequence} setCurrentCheck={setCurrentCheck} state={'checkSequnce'} />
                             <CheckDetail label={"Çek Sahibi:"} text={checkOwner} setCurrentCheck={setCurrentCheck} state={'check_owner'} />
                             <CheckDetail label={"Hesap Numarası:"} text={accountNumber} setCurrentCheck={setCurrentCheck} state={'account_number'} />
                             <CheckDetail label={"Çek Numarası:"} text={checkNumber} setCurrentCheck={setCurrentCheck} state={'check_number'} />
-                            <CheckDetail label={"Çek Miktarı:"} text={checkAmount} setCurrentCheck={setCurrentCheck} state={'check_amount'} />
+                            <CheckDetail label={"Çek Miktarı:"} text={amount} setCurrentCheck={setCurrentCheck} state={'amount'} />
                         </div>
 
                         <div className="check-detail-labels-column">
                             <CheckDetail label={"Banka:"} text={bankName} setCurrentCheck={setCurrentCheck} state={'bank_name'} />
                             <CheckDetail label={"Bölge:"} text={regionName} setCurrentCheck={setCurrentCheck} state={'regionName'} />
-                            <CheckDetail label={"Ödenecek Kişi:"} text={payeeName} setCurrentCheck={setCurrentCheck} state={'payeeName'} />
+                            <CheckDetail label={"Ödenecek Kişi:"} text={payee_name} setCurrentCheck={setCurrentCheck} state={'payee_name'} />
                             <CheckDetail label={"Çek Tarihi:"} text={checkDate} setCurrentCheck={setCurrentCheck} state={'checkDate'} />
                             <CheckDetail label={"Para Birimi:"} text={checkCurrency} setCurrentCheck={setCurrentCheck} state={'currency'} />                       
                         </div>

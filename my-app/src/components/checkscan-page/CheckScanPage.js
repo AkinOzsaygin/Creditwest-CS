@@ -39,14 +39,14 @@ const CheckScanPage = () => {
         checkSequnce: 0,
         check_number: '',
         check_owner: '',
+        amount: '',
         account_number: '',
         bank_number: '',
         branchName: '',
         regionName: '',
-        payeeName: '',
+        payee_name: '',
         checkDate: '',
         currency: '',
-        check_amount: '',
         front_image: placeHolderImage,
         back_image: placeHolderImage,
         isActive: false,
@@ -58,11 +58,16 @@ const CheckScanPage = () => {
     useEffect(() => {
         const getChecks = async () => {
             const response = await fetch('http://127.0.0.1:8000/checks/get/');
-            const data = await response.json();
-
+            
+           
+            
             if (response.ok) {
 
+                const data = await response.json();
+                console.log(data);
+
                 if (data.length > 0) {
+
                     let checkSequenceCount = 0;
                     const updatedChecks = data.map(check => {
                         checkSequenceCount = checkSequenceCount + 1
@@ -71,6 +76,7 @@ const CheckScanPage = () => {
                             check_owner: check.check_owner,
                             account_number: check.account_number,
                             check_number: check.check_number,
+                            amount:check.amount,
                             bank_number: check.bank_number,
                             ...check,
                             isActive: false,
@@ -134,13 +140,14 @@ const CheckScanPage = () => {
                     check_owner: check.check_owner,
                     account_number: check.account_number,
                     check_number: check.check_number,
+                    amount:check.amount,
                     bank_number: check.bank_number,
                     ...check,
                     isActive: false, 
                 }
             })
 
-            console.log(updatedChecks.length);
+            console.log(updatedChecks);
 
             setScannedChecks(updatedChecks)
             setCurrentCheck({...updatedChecks[updatedChecks.length - 1], isActive:true})
@@ -204,10 +211,10 @@ const CheckScanPage = () => {
                         checkOwner={currentCheck.check_owner}
                         accountNumber={currentCheck.account_number}
                         checkNumber={currentCheck.check_number}
-                        checkAmount={currentCheck.check_amount}
+                        amount={currentCheck.amount}
                         setCurrentCheck={setCurrentCheck}
                         checkDate={currentCheck.checkDate}
-                        payeeName={currentCheck.payeeName}
+                        payee_name={currentCheck.payee_name}
                         branchName={currentCheck.branchName}
                         regionName={currentCheck.regionName}
                         checkCurrency={currentCheck.currency}

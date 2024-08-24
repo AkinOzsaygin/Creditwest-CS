@@ -13,25 +13,36 @@ const TableItem = ({ item, setCurrentItem }) => {
 
             if (
                 cellData !== 'front_image' &&
-                cellData !== 'back_image' && 
-                cellData !== 'isActive' && 
+                cellData !== 'back_image' &&
+                cellData !== 'isActive' &&
                 cellData !== 'user_permissions' &&
                 cellData !== 'id' &&
-                cellData !== 'password') {
+                cellData !== 'password' &&
+                cellData !== "scan_date" &&
+                cellData !== "customer_id") {
 
-                if (typeof item[cellData] === 'object') {
-                    if (item[cellData]?.length > 0) {
-                        cellArr.push(<td key={uuid()}>{item[cellData][0].name}</td>)
+                    if (typeof item[cellData] === 'object') {
+
+                        if (item[cellData]?.length > 0) {
+
+                            cellArr.push(<td key={uuid()}>{item[cellData][0].name}</td>)
+
+                        } else {
+
+                            cellArr.push(<td key={uuid()}></td>)
+
+                        }
+
                     } else {
-                        cellArr.push(<td key={uuid()}></td>)
-                    }
 
-                } else {
-                    cellArr.push(<td key={uuid()}>{item[cellData]}</td>)
-                }
+                        cellArr.push(<td key={uuid()}>{item[cellData]}</td>)
+
+                    }
             }
         }
+
         return cellArr
+
     }, [item])
 
     return <tr style={style} className='check-row' onClick={() => setCurrentItem(item)}>{cells}</tr>
